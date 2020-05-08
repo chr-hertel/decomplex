@@ -25,3 +25,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    NdB\PhpDocCheck\Metrics\CognitiveComplexity: ~
+    NdB\PhpDocCheck\Metrics\CyclomaticComplexity: ~
+
+    PhpParser\Parser:
+        factory: ['@PhpParser\ParserFactory', 'create']
+        arguments:
+            $kind: !php/const PhpParser\ParserFactory::PREFER_PHP7
+
+    PhpParser\ParserFactory: ~
