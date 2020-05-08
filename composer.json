@@ -2,7 +2,7 @@
     "name": "stoffel/complexity-diff",
     "description": "Slim web interface to diff complexity of code snippets",
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "require": {
         "php": "^7.4",
         "ext-ctype": "*",
