@@ -29,8 +29,9 @@ class ComplexityDiffController extends AbstractController
      */
     public function calculate(Request $request, Calculator $calculator): JsonResponse
     {
-        return new JsonResponse(
-            $calculator->calculateComplexities((string) $request->getContent())
-        );
+        /** @var string $code */
+        $code = $request->getContent();
+
+        return new JsonResponse($calculator->calculateComplexities($code));
     }
 }
