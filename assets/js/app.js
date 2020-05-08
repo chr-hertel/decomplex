@@ -1,14 +1,30 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
+import '../css/app.scss';
 
-// any CSS you import will output into a single css file (app.css in this case)
-import '../css/app.css';
+import 'monaco-editor/esm/vs/editor/browser/controller/coreCommands.js';
+import 'monaco-editor/esm/vs/editor/contrib/find/findController.js';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
+import 'monaco-editor/esm/vs/basic-languages/php/php.contribution.js';
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
+self.MonacoEnvironment = {
+    getWorkerUrl: function (moduleId, label) {
+        return './editor.worker.bundle.js';
+    }
+}
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+monaco.editor.create(document.getElementById('js-editor-left'), {
+    value: [
+        "<?php",
+        "",
+    ].join('\n'),
+    minimap: { enabled: false },
+    language: 'php'
+});
+
+monaco.editor.create(document.getElementById('js-editor-right'), {
+    value: [
+        "<?php",
+        "",
+    ].join('\n'),
+    minimap: { enabled: false },
+    language: 'php'
+});
