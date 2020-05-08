@@ -26,6 +26,9 @@ class CalculationTest extends TestCase
         static::assertSame($expected, $calculation->jsonSerialize());
     }
 
+    /**
+     * @return array<int,array>
+     */
     public function provideSampleComplexities(): array
     {
         return [

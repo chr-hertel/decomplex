@@ -15,6 +15,9 @@ final class Calculation implements \JsonSerializable
         $this->cognitiveComplexity = $cognitiveComplexity;
     }
 
+    /**
+     * @return array<string,int>
+     */
     public function jsonSerialize(): array
     {
         return [

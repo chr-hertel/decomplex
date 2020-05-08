@@ -6,7 +6,7 @@ namespace App\ComplexityDiff;
 
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;
 use NdB\PhpDocCheck\Metrics\CyclomaticComplexity;
-use PhpParser\Error;
+use PhpParser\ErrorHandler\Collecting;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
 
@@ -28,10 +28,11 @@ final class Calculator
 
     public function calculateComplexities(string $code): Calculation
     {
-        try {
-            $ast = $this->parser->parse($code);
-        } catch (Error $error) {
-            throw new \LogicException('Unable to parse given source code', 0, $error);
+        $errorCollection = new Collecting();
+        $ast = $this->parser->parse($code, $errorCollection);
+
+        if (null === $ast || $errorCollection->hasErrors()) {
+            throw new \LogicException('Unable to parse given source code');
         }
 
         return new Calculation(

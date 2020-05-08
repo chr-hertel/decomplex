@@ -1,0 +1,14 @@
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+
+parameters:
+    level: max
+    paths:
+        - src/
+        - tests/
+    autoload_files:
+        - '%currentWorkingDirectory%/bin/.phpunit/phpunit-9.1.4-0/vendor/autoload.php'
+    excludes_analyse:
+        - tests/fixtures/*.php
+        - tests/bootstrap.php

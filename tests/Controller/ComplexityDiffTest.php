@@ -21,7 +21,7 @@ class ComplexityDiffTest extends WebTestCase
 
     public function testMessyCamelCaseExample(): void
     {
-        $code = file_get_contents(__DIR__ . '/../fixtures/camelcase-messy.php');
+        $code = (string) file_get_contents(__DIR__.'/../fixtures/camelcase-messy.php');
 
         $client = static::createClient();
         $client->request('POST', '/calculate', [], [], [], $code);
@@ -32,7 +32,7 @@ class ComplexityDiffTest extends WebTestCase
 
     public function testCleanCamelCaseExample(): void
     {
-        $code = file_get_contents(__DIR__ . '/../fixtures/camelcase-clean.php');
+        $code = (string) file_get_contents(__DIR__.'/../fixtures/camelcase-clean.php');
 
         $client = static::createClient();
         $client->request('POST', '/calculate', [], [], [], $code);
