@@ -27,3 +27,4 @@ yarn-error.log
 ###< friendsofphp/php-cs-fixer ###
 
 infection.log
+http-client.env.json
