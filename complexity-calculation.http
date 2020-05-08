@@ -1,10 +1,12 @@
-POST https://localhost:8001/calculate
+# set environment variables by copying and customizing http-client.env.json.dist to http-client.env.json
+
+POST {{host}}/calculate
 
 < tests/fixtures/camelcase-messy.php
 
 ###
 
-POST https://localhost:8001/calculate
+POST {{host}}/calculate
 
 < tests/fixtures/camelcase-clean.php
 
