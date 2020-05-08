@@ -19,6 +19,14 @@ class ComplexityDiffTest extends WebTestCase
         static::assertResponseIsSuccessful();
     }
 
+    public function testInvalidCodeSnippet(): void
+    {
+        $client = static::createClient();
+        $client->request('POST', '/calculate', [], [], [], '<?php $;null->$null');
+
+        static::assertResponseStatusCodeSame(400);
+    }
+
     public function testMessyCamelCaseExample(): void
     {
         $code = (string) file_get_contents(__DIR__.'/../fixtures/camelcase-messy.php');

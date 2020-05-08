@@ -1,0 +1,25 @@
+<div id="{{ identifier }}" class="bg-gray-200 p-4 rounded-lg shadow">
+    <i title="Copy Editor Content" class="float-right fa fa-copy text-gray-600 hover:text-gray-700 cursor-pointer"></i>
+    <h2 class="pb-4 font-bold">Editor #{{ number }}</h2>
+    <div class="bg-white text-white editor">{{ code_sample.code }}</div>
+    <div class="flex justify-between mt-4">
+        <div class="inline-flex">
+            <div class="js-cyclomatic-complexity text-white text-4xl font-bold py-2 px-4 bg-gray-800 rounded-l">{{ code_sample.cyclomatic_complexity }}</div>
+            <div class="bg-white py-2 px-4 rounded-r">
+                <span class="font-bold text-xl">Cyclomatic</span><br />
+                Complexity
+            </div>
+        </div>
+        <button title="Recalculate Complexities"
+                class="js-recalculate-complexities hover:text-gray-700 text-4xl text-gray-600 font-bold py-2 px-4 rounded">
+            <i class="fas fa-sync-alt"></i>
+        </button>
+        <div class="inline-flex">
+            <div class="js-cognitive-complexity text-white text-4xl font-bold py-2 px-4 bg-gray-800 rounded-l">{{ code_sample.cognitive_complexity }}</div>
+            <div class="bg-white py-2 px-4 rounded-r">
+                <span class="font-bold text-xl">Cognitive</span><br />
+                Complexity
+            </div>
+        </div>
+    </div>
+</div>
