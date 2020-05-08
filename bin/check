@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+composer validate --strict
+
+bin/console lint:yaml config --parse-tags
+bin/console lint:twig templates
+bin/console lint:container
+
+vendor/bin/php-cs-fixer fix --dry-run
+
+vendor/bin/security-checker security:check
+
+bin/phpunit
+
+vendor/bin/phpstan analyse
+
+vendor/bin/psalm --show-info=true

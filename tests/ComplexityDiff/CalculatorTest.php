@@ -16,7 +16,7 @@ class CalculatorTest extends TestCase
 {
     use MatchesSnapshots;
 
-    private $calculator;
+    private Calculator $calculator;
 
     protected function setUp(): void
     {
@@ -29,13 +29,15 @@ class CalculatorTest extends TestCase
      */
     public function testComplexityCalculation(string $sourceCode, int $cyclomaticComplexity, int $cognitiveComplexity): void
     {
-
         $expectedCalculation = new Calculation($cyclomaticComplexity, $cognitiveComplexity);
-        $actualCalculation = $this->calculator->calculateComplexities(file_get_contents($sourceCode));
+        $actualCalculation = $this->calculator->calculateComplexities((string) file_get_contents($sourceCode));
 
         static::assertEquals($expectedCalculation, $actualCalculation);
     }
 
+    /**
+     * @return array<int,array>
+     */
     public function provideCodeSnippets(): array
     {
         return [
