@@ -1,0 +1,11 @@
+POST https://localhost:8001/calculate
+
+< tests/fixtures/camelcase-messy.php
+
+###
+
+POST https://localhost:8001/calculate
+
+< tests/fixtures/camelcase-clean.php
+
+###
