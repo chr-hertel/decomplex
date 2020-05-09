@@ -29,6 +29,7 @@ self.MonacoEnvironment = {
         this.editor = monaco.editor.create($editor[0], {
             value: code,
             minimap: { enabled: false },
+            scrollBeyondLastLine: false,
             language: 'php',
         });
 
