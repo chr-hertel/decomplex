@@ -6,22 +6,22 @@
         {{ encore_entry_link_tags('app') }}
     </head>
     <body class="bg-gray-300 font-sans text-gray-700">
-        <a href="https://github.com/chr-hertel/complexity-diff" class="absolute top-0 right-0" target="_blank">
+        <a href="https://github.com/chr-hertel/complexity-diff" class="absolute top-0 right-0 z-0" target="_blank">
             <img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149"
                  alt="Fork me on GitHub" data-recalc-dims="1">
         </a>
-        <div class="bg-gray-500 text-gray-800 shadow">
-            <div class="container mx-auto py-3 flex justify-between">
+        <header class="bg-gray-500 text-gray-800 border-b-2 border-gray-400">
+            <div class="container mx-auto px-5 py-3 flex justify-between">
                 <h1 class="text-2xl"><strong>Complexity Diff</strong> - enhance your PHP code</h1>
                 <a href="/" class="text-gray-200 text-lg font-bold bg-gray-600 hover:bg-gray-700 rounded px-2 py-1"><i class="fa fa-times-circle"></i> Reset Editors</a>
             </div>
-        </div>
-        <div class="container mx-auto my-10">
+        </header>
+        <div class="p-10 bg-gray-100 border-b border-gray-400">
             <div class="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
                 {{ include('_editor.html.twig', {number: 1, identifier: 'js-editor-left', code_sample: code_sample_left}) }}
                 {{ include('_editor.html.twig', {number: 2, identifier: 'js-editor-right', code_sample: code_sample_right}) }}
             </div>
-            <div class="m-10">
+            <div class="container px-5 mx-auto mt-10">
                 <div class="bg-gray-500 p-3 rounded-lg text-2xl flex">
                     <button class="bg-gray-400 hover:bg-gray-300 rounded-l flex-none px-4 py-2 font-bold">Share Complexity Diff</button>
                     <input type="text" readonly="readonly" class="px-4 py-2 flex-1" placeholder="Click share button to generate permalink to this complexity diff ..." />
@@ -31,7 +31,9 @@
                     Please be aware that your code snippets get stored on server-side.
                 </div>
             </div>
-            <div class="px-3">
+        </div>
+        <div class="container px-5 mx-auto pt-8">
+            <div>
                 <h3 class="text-xl font-bold">Cyclomatic Complexity</h3>
                 <p class="my-4">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
@@ -52,7 +54,11 @@
                 </p>
             </div>
         </div>
-        <footer class="text-center py-5 text-gray-600">
+        <footer class="container mx-auto text-center pt-5 px-5 pb-10 text-gray-600">
+            <p class="my-4 text-gray-600">
+                Powered by PHP-Doc-Check, Monaco Editor, Symfony, Twig, Tailwind, Sass, jQuery, Fontawesome,
+                PostgreSQL and many more. Check out the sources at <a class="underline" href="https://github.com/chr-hertel/complexity-diff" target="_blank">Github</a>.
+            </p>
             Made with ♥ in Berlin by <a class="underline" href="//twitter.com/el_stoffel" target="_blank">@el_stoffel</a>
         </footer>
         {{ encore_entry_script_tags('app') }}
