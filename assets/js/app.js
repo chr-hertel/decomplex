@@ -49,17 +49,39 @@ self.MonacoEnvironment = {
                 data: this.editor.getModel().getValue(),
             })
                 .then(function (data) {
-                    self.$wrapper
-                        .find('.js-cyclomatic-complexity')
-                        .html(data.cyclomatic_complexity);
-                    self.$wrapper
-                        .find('.js-cognitive-complexity')
-                        .html(data.cognitive_complexity);
+                    self.setLevel(self.$wrapper, data.complexity_level);
+                    self.replaceComplexity(
+                        self.$wrapper.find('.js-cyclomatic-complexity'),
+                        data.cyclomatic_complexity
+                    );
+                    self.replaceComplexity(
+                        self.$wrapper.find('.js-cognitive-complexity'),
+                        data.cognitive_complexity
+                    );
                 })
                 .catch(function (jqXHR) {
-                    self.$wrapper.find('.js-cyclomatic-complexity').html('X');
-                    self.$wrapper.find('.js-cognitive-complexity').html('X');
+                    let error = { value: 'X', level: 'very-high' };
+                    self.setLevel(self.$wrapper, error.level);
+                    self.replaceComplexity(
+                        self.$wrapper.find('.js-cyclomatic-complexity'),
+                        error
+                    );
+                    self.replaceComplexity(
+                        self.$wrapper.find('.js-cognitive-complexity'),
+                        error
+                    );
                 });
+        },
+        replaceComplexity: function ($wrapper, data) {
+            this.setLevel($wrapper, data.level);
+            $wrapper.html(data.value);
+        },
+        setLevel: function ($wrapper, level) {
+            let oldLevel = $wrapper.data('complexity-level');
+            $wrapper
+                .removeClass('complexity-level-' + oldLevel)
+                .addClass('complexity-level-' + level)
+                .data('complexity-level', level);
         },
     });
 })(window, jQuery, monaco);
