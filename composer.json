@@ -12,6 +12,7 @@
         "doctrine/doctrine-migrations-bundle": "^2.1",
         "doctrine/orm": "^2.7",
         "niels-de-blaauw/php-doc-check": "^0.2.2",
+        "pugx/shortid-php": "^0.6.0",
         "sensio/framework-extra-bundle": "^5.5",
         "symfony/asset": "5.0.*",
         "symfony/console": "5.0.*",

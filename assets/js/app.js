@@ -17,9 +17,45 @@ self.MonacoEnvironment = {
     });
 
     window.ComplexityDiff = function () {
-        new Editor($('#js-editor-left'));
-        new Editor($('#js-editor-right'));
+        this.editorLeft = new Editor($('#js-editor-left'));
+        this.editorRight = new Editor($('#js-editor-right'));
+
+        $(document).on(
+            'click',
+            '.js-permalink-create',
+            this.handlePermalinkCreate.bind(this)
+        );
+        $(document).on(
+            'click',
+            '.js-permalink-copy',
+            this.handlePermalinkCopy.bind(this)
+        );
     };
+
+    $.extend(ComplexityDiff.prototype, {
+        handlePermalinkCreate: function () {
+            var self = this;
+            $.ajax({
+                method: 'POST',
+                url: '/permalink',
+                data: {
+                    left: self.editorLeft.getCode(),
+                    right: self.editorRight.getCode(),
+                },
+            })
+                .then(function (data) {
+                    $('.js-permalink-input').val(data);
+                })
+                .catch(function (jqXHR) {
+                    console.error(jqXHR);
+                });
+        },
+        handlePermalinkCopy: function () {
+            let $input = $('.js-permalink-input');
+            $input.select();
+            document.execCommand('copy');
+        },
+    });
 
     var Editor = function ($wrapper) {
         this.$wrapper = $wrapper;
@@ -41,12 +77,15 @@ self.MonacoEnvironment = {
     };
 
     $.extend(Editor.prototype, {
+        getCode: function () {
+            return this.editor.getModel().getValue();
+        },
         handleRecalculate: function () {
             var self = this;
             $.ajax({
                 method: 'POST',
                 url: '/calculate',
-                data: this.editor.getModel().getValue(),
+                data: this.getCode(),
             })
                 .then(function (data) {
                     self.setLevel(self.$wrapper, data.complexity_level);

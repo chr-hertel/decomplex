@@ -7,7 +7,7 @@ namespace App\Tests\Controller;
 use Spatie\Snapshots\MatchesSnapshots;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ComplexityDiffTest extends WebTestCase
+class ComplexityDiffControllerTest extends WebTestCase
 {
     use MatchesSnapshots;
 
@@ -47,5 +47,24 @@ class ComplexityDiffTest extends WebTestCase
 
         static::assertResponseIsSuccessful();
         $this->assertMatchesJsonSnapshot($client->getResponse()->getContent());
+    }
+
+    public function testCreatePermalink(): void
+    {
+        $codeLeft = '<?php echo "Hello World!";';
+        $codeRight = '<?php echo "Hallo Welt!";';
+
+        $client = static::createClient();
+        $client->request('POST', '/permalink', ['left' => $codeLeft, 'right' => $codeRight]);
+
+        static::assertResponseIsSuccessful();
+
+        $url = json_decode((string) $client->getResponse()->getContent());
+        $crawler = $client->request('GET', $url);
+
+        static::assertResponseIsSuccessful();
+
+        static::assertSame($codeLeft, $crawler->filter('#js-editor-left .editor')->text());
+        static::assertSame($codeRight, $crawler->filter('#js-editor-right .editor')->text());
     }
 }

@@ -12,5 +12,8 @@ $ cd complexity-diff
 $ composer install
 $ npm install
 $ npm run dev
+$ docker-compose up -d
+$ bin/console doctrine:database:create
+$ bin/console doctrine:schema:update --force
 $ symfony serve -d
 ```

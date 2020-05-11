@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\ComplexityDiff\Calculator;
+use App\Entity\Diff;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @Route("/", name="complexity_diff_")
@@ -19,15 +22,15 @@ class ComplexityDiffController extends AbstractController
 {
     /**
      * @Route("", name="index", methods={"GET"})
-     * @codeCoverageIgnore
+     * @Route("/{id<[0-9a-zA-Z\-\_]{6}>}", name="permalink", methods={"GET"})
      */
-    public function index(Calculator $calculator): Response
+    public function index(Calculator $calculator, Diff $diff = null): Response
     {
-        $codeLeft = (string) file_get_contents(__DIR__.'/../../tests/fixtures/camelcase-messy.php');
+        $codeLeft = null !== $diff ? $diff->getCodeSnippetLeft() : '<?php'.PHP_EOL;
         $complexitiesLeft = $calculator->calculateComplexities($codeLeft);
         $codeSampleLeft = array_merge(['code' => $codeLeft], $complexitiesLeft->jsonSerialize());
 
-        $codeRight = (string) file_get_contents(__DIR__.'/../../tests/fixtures/camelcase-clean.php');
+        $codeRight = null !== $diff ? $diff->getCodeSnippetRight() : '<?php'.PHP_EOL;
         $complexitiesRight = $calculator->calculateComplexities($codeRight);
         $codeSampleRight = array_merge(['code' => $codeRight], $complexitiesRight->jsonSerialize());
 
@@ -52,5 +55,23 @@ class ComplexityDiffController extends AbstractController
         }
 
         return new JsonResponse($calculation);
+    }
+
+    /**
+     * @Route("permalink", name="create_permalink", methods={"POST"})
+     */
+    public function permalink(Request $request, EntityManagerInterface $entityManager): JsonResponse
+    {
+        $diff = new Diff(
+            $request->request->get('left', ''),
+            $request->request->get('right', '')
+        );
+
+        $entityManager->persist($diff);
+        $entityManager->flush();
+
+        return new JsonResponse(
+            $this->generateUrl('complexity_diff_permalink', ['id' => $diff->getId()], UrlGeneratorInterface::ABSOLUTE_URL)
+        );
     }
 }
