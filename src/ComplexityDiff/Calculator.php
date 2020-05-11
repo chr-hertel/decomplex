@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\ComplexityDiff;
 
+use LogicException;
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;
 use NdB\PhpDocCheck\Metrics\CyclomaticComplexity;
 use PhpParser\ErrorHandler\Collecting;
@@ -32,7 +33,7 @@ final class Calculator
         $ast = $this->parser->parse($code, $errorCollection);
 
         if (null === $ast || $errorCollection->hasErrors()) {
-            throw new \LogicException('Unable to parse given source code');
+            throw new LogicException('Unable to parse given source code');
         }
 
         return new Calculation(
