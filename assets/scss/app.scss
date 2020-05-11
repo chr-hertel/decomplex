@@ -3,6 +3,64 @@
 @import 'tailwindcss/utilities';
 @import '@fortawesome/fontawesome-free/css/all';
 
+body {
+    @apply bg-gray-300 font-sans text-gray-700;
+}
+
+header {
+    @apply bg-gray-500 text-gray-800 border-b-2 border-gray-400;
+
+    div {
+        @apply mx-auto px-5 py-3 flex justify-between;
+    }
+
+    h1 {
+        @apply text-2xl;
+    }
+
+    a {
+        @apply text-gray-200 text-lg font-bold bg-gray-600 rounded px-2 py-1;
+
+        &:hover {
+            @apply bg-gray-700;
+        }
+    }
+}
+
+.editor-wrapper {
+    @apply bg-gray-400 p-4 rounded-lg shadow-lg border-b-8 relative z-10;
+
+    &.complexity-level-low {
+        @apply border-green-600;
+    }
+    &.complexity-level-moderate {
+        @apply border-yellow-600;
+    }
+    &.complexity-level-high {
+        @apply border-orange-600;
+    }
+    &.complexity-level-very-high {
+        @apply border-red-600;
+    }
+
+    .metrics {
+        @apply flex justify-between mt-4;
+
+        .complexity-level-low {
+            @apply bg-green-500;
+        }
+        .complexity-level-moderate {
+            @apply bg-yellow-500;
+        }
+        .complexity-level-high {
+            @apply bg-orange-500;
+        }
+        .complexity-level-very-high {
+            @apply bg-red-500;
+        }
+    }
+}
+
 .editor {
     min-height: 400px;
 }
