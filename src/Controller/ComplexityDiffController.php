@@ -26,17 +26,17 @@ class ComplexityDiffController extends AbstractController
      */
     public function index(Calculator $calculator, Diff $diff = null): Response
     {
-        $codeLeft = null !== $diff ? $diff->getCodeSnippetLeft() : '<?php'.PHP_EOL;
-        $complexitiesLeft = $calculator->calculateComplexities($codeLeft);
-        $codeSampleLeft = array_merge(['code' => $codeLeft], $complexitiesLeft->jsonSerialize());
-
-        $codeRight = null !== $diff ? $diff->getCodeSnippetRight() : '<?php'.PHP_EOL;
-        $complexitiesRight = $calculator->calculateComplexities($codeRight);
-        $codeSampleRight = array_merge(['code' => $codeRight], $complexitiesRight->jsonSerialize());
+        $diff ??= new Diff();
 
         return $this->render('index.html.twig', [
-            'code_sample_left' => $codeSampleLeft,
-            'code_sample_right' => $codeSampleRight,
+            'left' => [
+                'code' => $diff->getCodeSnippetLeft(),
+                'complexity' => $calculator->calculateComplexities($diff->getCodeSnippetLeft())->jsonSerialize(),
+            ],
+            'right' => [
+                'code' => $diff->getCodeSnippetRight(),
+                'complexity' => $calculator->calculateComplexities($diff->getCodeSnippetRight())->jsonSerialize(),
+            ],
         ]);
     }
 

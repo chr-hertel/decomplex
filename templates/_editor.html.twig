@@ -1,13 +1,13 @@
-<div id="{{ identifier }}" data-complexity-level="{{ code_sample.complexity_level }}"
-     class="editor-wrapper complexity-level-{{ code_sample.complexity_level }}">
+<div id="{{ identifier }}" data-complexity-level="{{ code_snippet.complexity.complexity_level }}"
+     class="editor-wrapper complexity-level-{{ code_snippet.complexity.complexity_level }}">
     <i title="Copy Editor Content" class="float-right fa fa-copy text-gray-600 hover:text-gray-700 cursor-pointer"></i>
     <h2 class="pb-4 font-bold text-xl">Editor #{{ number }}</h2>
-    <div class="bg-white text-white editor">{{ code_sample.code }}</div>
+    <div class="bg-white text-white editor">{{ code_snippet.code }}</div>
     <div class="metrics">
         <div class="inline-flex">
-            <div class="js-cyclomatic-complexity text-white text-4xl font-bold py-2 px-4 rounded-l complexity-level-{{ code_sample.cyclomatic_complexity.level }}"
-                 data-complexity-level="{{ code_sample.cyclomatic_complexity.level }}">
-                {{ code_sample.cyclomatic_complexity.value }}
+            <div class="js-cyclomatic-complexity text-white text-4xl font-bold py-2 px-4 rounded-l complexity-level-{{ code_snippet.complexity.cyclomatic_complexity.level }}"
+                 data-complexity-level="{{ code_snippet.complexity.cyclomatic_complexity.level }}">
+                {{ code_snippet.complexity.cyclomatic_complexity.value }}
             </div>
             <div class="bg-white py-2 px-4 rounded-r">
                 <span class="font-bold text-xl">Cyclomatic</span><br />
@@ -19,9 +19,9 @@
             <i class="fas fa-sync-alt"></i>
         </button>
         <div class="inline-flex">
-            <div class="js-cognitive-complexity text-white text-4xl font-bold py-2 px-4 rounded-l complexity-level-{{ code_sample.cognitive_complexity.level }}"
-                 data-complexity-level="{{ code_sample.cognitive_complexity.level }}">
-                {{ code_sample.cognitive_complexity.value }}
+            <div class="js-cognitive-complexity text-white text-4xl font-bold py-2 px-4 rounded-l complexity-level-{{ code_snippet.complexity.cognitive_complexity.level }}"
+                 data-complexity-level="{{ code_snippet.complexity.cognitive_complexity.level }}">
+                {{ code_snippet.complexity.cognitive_complexity.value }}
             </div>
             <div class="bg-white py-2 px-4 rounded-r">
                 <span class="font-bold text-xl">Cognitive</span><br />

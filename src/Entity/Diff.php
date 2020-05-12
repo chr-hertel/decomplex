@@ -12,6 +12,8 @@ use PUGX\Shortid\Shortid;
  */
 class Diff
 {
+    private const DEFAULT_CODE = '<?php'.PHP_EOL;
+
     /**
      * @ORM\Id
      * @ORM\Column(length=6)
@@ -29,7 +31,7 @@ class Diff
      */
     private string $codeSnippetRight;
 
-    public function __construct(string $codeSnippetLeft, string $codeSnippetRight)
+    public function __construct(string $codeSnippetLeft = self::DEFAULT_CODE, string $codeSnippetRight = self::DEFAULT_CODE)
     {
         $this->id = (string) Shortid::generate(6);
         $this->codeSnippetLeft = $codeSnippetLeft;
