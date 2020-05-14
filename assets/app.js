@@ -1,17 +1,15 @@
 import './app.scss';
+import 'codemirror/lib/codemirror';
+import 'codemirror/mode/php/php';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/addon/fold/foldcode'
+import 'codemirror/addon/fold/foldgutter'
+import 'codemirror/addon/fold/foldgutter.css'
+import 'codemirror/addon/fold/comment-fold'
+import 'codemirror/addon/fold/brace-fold'
+import 'codemirror/addon/edit/matchbrackets';
 
-import 'monaco-editor/esm/vs/editor/browser/controller/coreCommands.js';
-import 'monaco-editor/esm/vs/editor/contrib/find/findController.js';
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
-import 'monaco-editor/esm/vs/basic-languages/php/php.contribution.js';
-
-self.MonacoEnvironment = {
-    getWorkerUrl: function (moduleId, label) {
-        return './editor.worker.bundle.js';
-    },
-};
-
-(function (window, $, monaco) {
+(function (window, $ , CodeMirror) {
     $(document).ready(function () {
         new ComplexityDiff();
     });
@@ -59,15 +57,15 @@ self.MonacoEnvironment = {
 
     var Editor = function ($wrapper) {
         this.$wrapper = $wrapper;
-        let $editor = $wrapper.find('.editor');
-        let code = $editor.text();
-        $editor.html('');
-        this.editor = monaco.editor.create($editor[0], {
-            value: code,
-            minimap: { enabled: false },
-            scrollBeyondLastLine: false,
-            language: 'php',
-        });
+        this.editor = CodeMirror.fromTextArea($wrapper.find('.editor')[0], {
+            mode: 'php',
+            lineNumbers: true,
+            viewportMargin: Infinity,
+            matchBrackets: true,
+            indentUnit: 4,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+        })
 
         $wrapper.on(
             'click',
@@ -77,15 +75,12 @@ self.MonacoEnvironment = {
     };
 
     $.extend(Editor.prototype, {
-        getCode: function () {
-            return this.editor.getModel().getValue();
-        },
         handleRecalculate: function () {
             var self = this;
             $.ajax({
                 method: 'POST',
                 url: '/calculate',
-                data: this.getCode(),
+                data: this.editor.getValue(),
             })
                 .then(function (data) {
                     self.setLevel(self.$wrapper, data.complexity_level);
@@ -123,4 +118,4 @@ self.MonacoEnvironment = {
                 .data('complexity-level', level);
         },
     });
-})(window, jQuery, monaco);
+})(window, jQuery, CodeMirror);

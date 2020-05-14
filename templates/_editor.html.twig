@@ -2,7 +2,7 @@
      class="editor-wrapper complexity-level-{{ code_snippet.complexity.complexity_level }}">
     <i title="Copy Editor Content" class="js-copy-editor copy-editor fa fa-copy"></i>
     <h2>Editor #{{ number }}</h2>
-    <div class="editor">{{ code_snippet.code }}</div>
+    <textarea class="editor">{{ code_snippet.code }}</textarea>
     <div class="metrics">
         <div class="complexity-badge">
             <div class="js-cyclomatic-complexity metric complexity-level-{{ code_snippet.complexity.cyclomatic_complexity.level }}"

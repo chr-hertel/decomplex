@@ -99,8 +99,11 @@ header {
     }
 
     .editor {
-        @apply bg-white text-white;
-        min-height: 400px;
+        @apply bg-white w-full;
+    }
+
+    .CodeMirror {
+        height: auto;
     }
 
     .metrics {
