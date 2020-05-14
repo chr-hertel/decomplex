@@ -12,7 +12,7 @@ use PUGX\Shortid\Shortid;
  */
 class Diff
 {
-    private const DEFAULT_CODE = '<?php'.PHP_EOL;
+    private const DEFAULT_CODE = '<?php'.PHP_EOL.PHP_EOL.'// paste your code snippet to calculate complexity'.PHP_EOL;
 
     /**
      * @ORM\Id
