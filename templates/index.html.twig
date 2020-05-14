@@ -59,7 +59,7 @@
                 correspond to indivisible groups of commands of a program, and a directed edge connects two nodes if
                 the second command might be executed immediately after the first command. Cyclomatic complexity may
                 also be applied to individual functions, modules, methods or classes within a program.
-                <a class="underline" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">See Wikipedia for more</a>
+                <a class="underline" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">See Wikipedia for more information.</a>
             </p>
             <p>
                 To measure or enforce cyclomatic complexity limits in your application see
@@ -68,12 +68,15 @@
             </p>
             <h3 class="pt-8">Cognitive Complexity</h3>
             <p class="my-4">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                Cognitive Complexity is a measure of how difficult a unit of code is to intuitively understand. Unlike
+                Cyclomatic Complexity it was formulated with the primary goal of calculating method scores that more
+                accurately reflect methods’ relative understandability, and with secondary goals of addressing modern
+                language constructs and producing metrics that are valuable above the method level.
+                <a class="underline" href="https://www.sonarsource.com/docs/CognitiveComplexity.pdf" target="_blank">See SonarSource's Whitepaper for more information.</a>
+            </p>
+            <p>
+                To enforce cognitive complexity limits in your application with <a href="https://phpstan.org/" target="_blank">PHPStan</a> see
+                <a class="underline" href="https://www.tomasvotruba.com/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/" target="_blank">Tomas Votruba's blog post</a>.
             </p>
         </div>
         <footer class="container">
