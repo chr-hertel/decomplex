@@ -75,12 +75,15 @@ import 'codemirror/addon/edit/matchbrackets';
     };
 
     $.extend(Editor.prototype, {
+        getCode: function () {
+            return this.editor.getValue();
+        },
         handleRecalculate: function () {
             var self = this;
             $.ajax({
                 method: 'POST',
                 url: '/calculate',
-                data: this.editor.getValue(),
+                data: this.getCode(),
             })
                 .then(function (data) {
                     self.setLevel(self.$wrapper, data.complexity_level);
