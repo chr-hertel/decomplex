@@ -33,26 +33,45 @@
             </div>
         </div>
         <div class="container px-5 mx-auto pt-8">
-            <div>
-                <h3 class="text-xl font-bold">Cyclomatic Complexity</h3>
-                <p class="my-4">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                    ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                    dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                </p>
-                <h3 class="text-xl pt-4 font-bold">Cognitive Complexity</h3>
-                <p class="my-4">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                    ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                    dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                </p>
+            <h3 class="text-xl font-bold">Complexity Levels</h3>
+            <div class="complexity-bar text-center my-4 pb-3 rounded-lg">
+                <div class="complexity-bar-inner flex justify-content leading-tight">
+                    <div class="flex-1 mr-1 bg-white bg-opacity-85 rounded-tl-lg py-2">
+                        <span class="font-bold text-xl">Low</span><br />1 &dash; 4
+                    </div>
+                    <div class="flex-1 mr-1 bg-white bg-opacity-85 py-2">
+                        <span class="font-bold text-xl">Moderate</span><br />5 &dash; 7
+                    </div>
+                    <div class="flex-1 mr-1 bg-white bg-opacity-85 py-2">
+                        <span class="font-bold text-xl">High</span><br />8 &dash; 10
+                    </div>
+                    <div class="flex-1 bg-white bg-opacity-85 rounded-tr-lg py-2">
+                        <span class="font-bold text-xl">Very High</span><br />> 10
+                    </div>
+                </div>
             </div>
+            <h3 class="text-xl pt-6 font-bold">Cyclomatic Complexity</h3>
+            <p class="my-4">
+                Cyclomatic complexity is computed using the control flow graph of the program: the nodes of the graph
+                correspond to indivisible groups of commands of a program, and a directed edge connects two nodes if
+                the second command might be executed immediately after the first command. Cyclomatic complexity may
+                also be applied to individual functions, modules, methods or classes within a program.
+                <a class="underline" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">See Wikipedia for more</a>
+            </p>
+            <p>
+                To measure or enforce cyclomatic complexity limits in your application see
+                <a class="underline" href="https://github.com/sebastianbergmann/phploc" target="_blank">PHPLOC</a> or
+                <a class="underline" href="https://phpmd.org/" target="_blank">PHP Mess Detector</a>.
+            </p>
+            <h3 class="text-xl pt-8 font-bold">Cognitive Complexity</h3>
+            <p class="my-4">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
         </div>
         <footer class="container mx-auto text-center pt-5 px-5 pb-10 text-gray-600">
             <p class="my-4 text-gray-600">
