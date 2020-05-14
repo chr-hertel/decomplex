@@ -64,3 +64,35 @@ header {
 .editor {
     min-height: 400px;
 }
+
+.complexity-bar {
+    background: #48bb78;
+    background: -moz-linear-gradient(
+        left,
+        #48bb78 19%,
+        #ecc94b 27%,
+        #ecc94b 46%,
+        #ed8936 54%,
+        #ed8936 73%,
+        #f56565 81%
+    );
+    background: -webkit-linear-gradient(
+        left,
+        #48bb78 19%,
+        #ecc94b 27%,
+        #ecc94b 46%,
+        #ed8936 54%,
+        #ed8936 73%,
+        #f56565 81%
+    );
+    background: linear-gradient(
+        to right,
+        #48bb78 19%,
+        #ecc94b 27%,
+        #ecc94b 46%,
+        #ed8936 54%,
+        #ed8936 73%,
+        #f56565 81%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48bb78', endColorstr='#f56565',GradientType=1 );
+}
