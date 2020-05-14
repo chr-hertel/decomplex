@@ -2,14 +2,14 @@ import './app.scss';
 import 'codemirror/lib/codemirror';
 import 'codemirror/mode/php/php';
 import 'codemirror/lib/codemirror.css';
-import 'codemirror/addon/fold/foldcode'
-import 'codemirror/addon/fold/foldgutter'
-import 'codemirror/addon/fold/foldgutter.css'
-import 'codemirror/addon/fold/comment-fold'
-import 'codemirror/addon/fold/brace-fold'
+import 'codemirror/addon/fold/foldcode';
+import 'codemirror/addon/fold/foldgutter';
+import 'codemirror/addon/fold/foldgutter.css';
+import 'codemirror/addon/fold/comment-fold';
+import 'codemirror/addon/fold/brace-fold';
 import 'codemirror/addon/edit/matchbrackets';
 
-(function (window, $ , CodeMirror) {
+(function (window, $, CodeMirror) {
     $(document).ready(function () {
         new ComplexityDiff();
     });
@@ -64,8 +64,8 @@ import 'codemirror/addon/edit/matchbrackets';
             matchBrackets: true,
             indentUnit: 4,
             foldGutter: true,
-            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
-        })
+            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+        });
 
         $wrapper.on(
             'click',
