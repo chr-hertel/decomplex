@@ -153,13 +153,13 @@ header {
     .complexity-bar {
         @apply text-center my-4 pb-2 rounded-lg;
         background: linear-gradient(
-                        to right,
-                        theme('colors.green.500') 19%,
-                        theme('colors.yellow.500') 27%,
-                        theme('colors.yellow.500') 46%,
-                        theme('colors.orange.500') 54%,
-                        theme('colors.orange.500') 73%,
-                        theme('colors.red.500') 81%
+            to right,
+            theme('colors.green.500') 19%,
+            theme('colors.yellow.500') 27%,
+            theme('colors.yellow.500') 46%,
+            theme('colors.orange.500') 54%,
+            theme('colors.orange.500') 73%,
+            theme('colors.red.500') 81%
         );
 
         .complexity-bar-inner {
