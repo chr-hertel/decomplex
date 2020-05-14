@@ -1,4 +1,4 @@
-import '../scss/app.scss';
+import './app.scss';
 
 import 'monaco-editor/esm/vs/editor/browser/controller/coreCommands.js';
 import 'monaco-editor/esm/vs/editor/contrib/find/findController.js';

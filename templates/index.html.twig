@@ -3,54 +3,57 @@
     <head>
         <meta charset="UTF-8">
         <title>Complexity Diff - enhance your PHP code</title>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
         {{ encore_entry_link_tags('app') }}
     </head>
     <body>
-        <a href="https://github.com/chr-hertel/complexity-diff" class="absolute top-0 right-0 z-0" target="_blank">
+        <a href="https://github.com/chr-hertel/complexity-diff" class="github-ribbon" target="_blank">
             <img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149"
                  alt="Fork me on GitHub" data-recalc-dims="1">
         </a>
         <header>
             <div class="container">
-                <h1><strong>Complexity Diff</strong> - enhance your PHP code</h1>
+                <div>
+                    <h1>deComplex.it</h1><span>diff and reduce the complexity of your PHP code</span>
+                </div>
                 <a href="/"><i class="fa fa-times-circle"></i> Reset Editors</a>
             </div>
         </header>
-        <div class="p-10 bg-gray-100 border-b border-gray-400">
+        <div class="editor-container">
             <div class="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
                 {{ include('_editor.html.twig', {number: 1, identifier: 'js-editor-left', code_snippet: left}) }}
                 {{ include('_editor.html.twig', {number: 2, identifier: 'js-editor-right', code_snippet: right}) }}
             </div>
-            <div class="container px-5 mx-auto mt-10">
-                <div class="bg-gray-500 p-3 rounded-lg text-2xl flex">
-                    <button class="js-permalink-create bg-gray-400 hover:bg-gray-300 rounded-l flex-none px-4 py-2 font-bold">Share Complexity Diff</button>
-                    <input type="text" readonly="readonly" class="js-permalink-input px-4 py-2 flex-1" placeholder="Click share button to generate permalink to this complexity diff ..." />
-                    <button class="js-permalink-copy bg-gray-400 hover:bg-gray-300 rounded-r flex-none px-4 py-2 font-bold"><i class="fa fa-copy"></i></button>
+            <div class="container">
+                <div>
+                    <button class="js-permalink-create permalink-create">Share Complexity Diff</button>
+                    <input type="text" readonly="readonly" class="js-permalink-input" placeholder="Click share button to generate permalink to this complexity diff ..." />
+                    <button class="js-permalink-copy permalink-copy"><i class="fa fa-copy"></i></button>
                 </div>
-                <div class="text-gray-600 pl-3">
+                <span>
                     Please be aware that your code snippets get stored on server-side while using this feature.
-                </div>
+                </span>
             </div>
         </div>
-        <div class="container px-5 mx-auto pt-8">
-            <h3 class="text-xl font-bold">Complexity Levels</h3>
-            <div class="complexity-bar text-center my-4 pb-3 rounded-lg">
-                <div class="complexity-bar-inner flex justify-content leading-tight">
-                    <div class="flex-1 mr-1 bg-white bg-opacity-85 rounded-tl-lg py-2">
-                        <span class="font-bold text-xl">Low</span><br />1 &dash; 4
+        <div class="notes container">
+            <h3>Complexity Levels</h3>
+            <div class="complexity-bar">
+                <div class="complexity-bar-inner">
+                    <div>
+                        <span>Low</span><br />1 &dash; 4
                     </div>
-                    <div class="flex-1 mr-1 bg-white bg-opacity-85 py-2">
-                        <span class="font-bold text-xl">Moderate</span><br />5 &dash; 7
+                    <div>
+                        <span>Moderate</span><br />5 &dash; 7
                     </div>
-                    <div class="flex-1 mr-1 bg-white bg-opacity-85 py-2">
-                        <span class="font-bold text-xl">High</span><br />8 &dash; 10
+                    <div>
+                        <span>High</span><br />8 &dash; 10
                     </div>
-                    <div class="flex-1 bg-white bg-opacity-85 rounded-tr-lg py-2">
-                        <span class="font-bold text-xl">Very High</span><br />> 10
+                    <div>
+                        <span>Very High</span><br />> 10
                     </div>
                 </div>
             </div>
-            <h3 class="text-xl pt-6 font-bold">Cyclomatic Complexity</h3>
+            <h3 class="pt-6">Cyclomatic Complexity</h3>
             <p class="my-4">
                 Cyclomatic complexity is computed using the control flow graph of the program: the nodes of the graph
                 correspond to indivisible groups of commands of a program, and a directed edge connects two nodes if
@@ -63,7 +66,7 @@
                 <a class="underline" href="https://github.com/sebastianbergmann/phploc" target="_blank">PHPLOC</a> or
                 <a class="underline" href="https://phpmd.org/" target="_blank">PHP Mess Detector</a>.
             </p>
-            <h3 class="text-xl pt-8 font-bold">Cognitive Complexity</h3>
+            <h3 class="pt-8">Cognitive Complexity</h3>
             <p class="my-4">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                 labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
@@ -73,8 +76,8 @@
                 clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
             </p>
         </div>
-        <footer class="container mx-auto text-center pt-5 px-5 pb-10 text-gray-600">
-            <p class="my-4 text-gray-600">
+        <footer class="container">
+            <p>
                 Powered by
                 <a href="https://github.com/NielsdeBlaauw/php-doc-check/" target="_blank">PHP Doc Check</a>,
                 <a href="https://microsoft.github.io/monaco-editor/" target="_blank">Monaco Editor</a>,
