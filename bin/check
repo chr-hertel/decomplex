@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
-composer validate --strict
-composer check-platform-reqs
+symfony composer validate --strict
+symfony composer check-platform-reqs
 
-bin/console lint:yaml config --parse-tags
-bin/console lint:twig templates
-bin/console lint:container
+symfony console lint:yaml config --parse-tags
+symfony console lint:twig templates
+symfony console lint:container
 
-vendor/bin/php-cs-fixer fix --dry-run
+symfony php vendor/bin/php-cs-fixer fix --dry-run
 npm run check-style
 
-vendor/bin/security-checker security:check
+symfony php vendor/bin/security-checker security:check
 
-vendor/bin/phpstan analyse
-vendor/bin/psalm --show-info=true
-vendor/bin/phpmd src ansi cleancode,codesize,design,naming,unusedcode,controversial
+symfony php vendor/bin/phpstan analyse
+symfony php vendor/bin/psalm --show-info=true
+symfony php vendor/bin/phpmd src ansi cleancode,codesize,design,naming,unusedcode,controversial
 
-bin/phpunit
-vendor/bin/infection
+symfony php bin/phpunit
+symfony php vendor/bin/infection
