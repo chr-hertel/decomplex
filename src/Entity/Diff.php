@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use PUGX\Shortid\Shortid;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DiffRepository")
  */
 class Diff
 {
