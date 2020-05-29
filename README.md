@@ -7,8 +7,8 @@ Setup
 -----
 
 ```bash
-$ git clone git@github.com:chr-hertel/complexity-diff.git
-$ cd complexity-diff
+$ git clone git@github.com:chr-hertel/decomplex.git
+$ cd decomplex
 $ composer install
 $ npm install
 $ npm run dev
