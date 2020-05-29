@@ -1,5 +1,5 @@
 {
-    "name": "stoffel/complexity-diff",
+    "name": "stoffel/decomplex",
     "description": "Slim web interface to diff complexity of code snippets",
     "type": "project",
     "license": "MIT",
