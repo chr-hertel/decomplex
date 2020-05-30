@@ -28,3 +28,4 @@ yarn-error.log
 
 infection.log
 http-client.env.json
+docker-compose.override.yml
