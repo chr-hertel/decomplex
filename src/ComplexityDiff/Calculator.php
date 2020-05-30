@@ -47,9 +47,9 @@ final class Calculator
      */
     private function calculateCyclomaticComplexity(array $ast): int
     {
-        return array_reduce($ast, function (int $complexity, Stmt $node) {
-            return $complexity + $this->cyclomaticComplexity->getValue($node);
-        }, 0);
+        $calc = fn (int $complexity, Stmt $node): int => $complexity + $this->cyclomaticComplexity->getValue($node);
+
+        return array_reduce($ast, $calc, 0);
     }
 
     /**
@@ -57,8 +57,8 @@ final class Calculator
      */
     private function calculateCognitiveComplexity(array $ast): int
     {
-        return array_reduce($ast, function (int $complexity, Stmt $node) {
-            return $complexity + $this->cognitiveComplexity->getValue($node);
-        }, 0);
+        $calc = fn (int $complexity, Stmt $node): int => $complexity + $this->cognitiveComplexity->getValue($node);
+
+        return array_reduce($ast, $calc, 0);
     }
 }
