@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\Shortid\Shortid;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DiffRepository")
+ * @ORM\Table(
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="snippets_combi", columns={"snippet_left_id", "snippet_right_id"})
+ *     }
+ * )
  */
 class Diff
 {
@@ -22,7 +28,7 @@ class Diff
     /**
      * @ORM\Column(type="datetime_immutable")
      */
-    private \DateTimeImmutable $createdAt;
+    private DateTimeImmutable $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Snippet", fetch="EAGER", cascade={"persist"})
@@ -37,7 +43,7 @@ class Diff
     public function __construct(Snippet $snippetLeft, Snippet $snippetRight)
     {
         $this->id = (string) Shortid::generate(6);
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new DateTimeImmutable();
         $this->snippetLeft = $snippetLeft;
         $this->snippetRight = $snippetRight;
     }
@@ -47,7 +53,7 @@ class Diff
         return $this->id;
     }
 
-    public function getCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
     }

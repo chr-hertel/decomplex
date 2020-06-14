@@ -48,6 +48,11 @@ class Snippet implements \JsonSerializable
         $this->cognitiveComplexity = $cognitiveComplexity;
     }
 
+    public function getHash(): string
+    {
+        return $this->hash;
+    }
+
     public function getCode(): string
     {
         return $this->code;
