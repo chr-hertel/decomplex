@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\ComplexityDiff;
 
-use App\ComplexityDiff\Calculation;
 use App\ComplexityDiff\Calculator;
+use App\Entity\Snippet;
+use App\Repository\SnippetRepository;
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;
 use NdB\PhpDocCheck\Metrics\CyclomaticComplexity;
 use PhpParser\ParserFactory;
@@ -20,17 +21,19 @@ class CalculatorTest extends TestCase
 
     protected function setUp(): void
     {
+        $repository = $this->createMock(SnippetRepository::class);
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
-        $this->calculator = new Calculator($parser, new CyclomaticComplexity(), new CognitiveComplexity());
+        $this->calculator = new Calculator($repository, $parser, new CyclomaticComplexity(), new CognitiveComplexity());
     }
 
     /**
      * @dataProvider provideCodeSnippets
      */
-    public function testComplexityCalculation(string $sourceCode, int $cyclomaticComplexity, int $cognitiveComplexity): void
+    public function testComplexityCalculation(string $sourceFile, int $cyclomaticComplexity, int $cognitiveComplexity): void
     {
-        $expectedCalculation = new Calculation($cyclomaticComplexity, $cognitiveComplexity);
-        $actualCalculation = $this->calculator->calculateComplexities((string) file_get_contents($sourceCode));
+        $code = (string) file_get_contents($sourceFile);
+        $expectedCalculation = new Snippet($code, $cyclomaticComplexity, $cognitiveComplexity);
+        $actualCalculation = $this->calculator->calculateComplexities($code);
 
         static::assertEquals($expectedCalculation, $actualCalculation);
     }

@@ -12,8 +12,6 @@ use PUGX\Shortid\Shortid;
  */
 class Diff
 {
-    private const DEFAULT_CODE = '<?php'.PHP_EOL.PHP_EOL.'// paste your code snippet to calculate complexity'.PHP_EOL;
-
     /**
      * @ORM\Id
      * @ORM\Column(length=6)
@@ -22,20 +20,26 @@ class Diff
     private string $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="datetime_immutable")
      */
-    private string $codeSnippetLeft;
+    private \DateTimeImmutable $createdAt;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Snippet", fetch="EAGER", cascade={"persist"})
      */
-    private string $codeSnippetRight;
+    private Snippet $snippetLeft;
 
-    public function __construct(string $codeSnippetLeft = self::DEFAULT_CODE, string $codeSnippetRight = self::DEFAULT_CODE)
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Snippet", fetch="EAGER", cascade={"persist"})
+     */
+    private Snippet $snippetRight;
+
+    public function __construct(Snippet $snippetLeft, Snippet $snippetRight)
     {
         $this->id = (string) Shortid::generate(6);
-        $this->codeSnippetLeft = $codeSnippetLeft;
-        $this->codeSnippetRight = $codeSnippetRight;
+        $this->createdAt = new \DateTimeImmutable();
+        $this->snippetLeft = $snippetLeft;
+        $this->snippetRight = $snippetRight;
     }
 
     public function getId(): string
@@ -43,13 +47,18 @@ class Diff
         return $this->id;
     }
 
-    public function getCodeSnippetLeft(): string
+    public function getCreatedAt(): \DateTimeImmutable
     {
-        return $this->codeSnippetLeft;
+        return $this->createdAt;
     }
 
-    public function getCodeSnippetRight(): string
+    public function getSnippetLeft(): Snippet
     {
-        return $this->codeSnippetRight;
+        return $this->snippetLeft;
+    }
+
+    public function getSnippetRight(): Snippet
+    {
+        return $this->snippetRight;
     }
 }

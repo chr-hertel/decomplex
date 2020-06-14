@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\ComplexityDiff;
 
+use App\Entity\Snippet;
+use App\Repository\SnippetRepository;
 use LogicException;
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;
 use NdB\PhpDocCheck\Metrics\CyclomaticComplexity;
@@ -13,22 +15,31 @@ use PhpParser\Parser;
 
 final class Calculator
 {
+    private SnippetRepository $snippetRepository;
     private Parser $parser;
     private CyclomaticComplexity $cyclomaticComplexity;
     private CognitiveComplexity $cognitiveComplexity;
 
     public function __construct(
+        SnippetRepository $snippetRepository,
         Parser $parser,
         CyclomaticComplexity $cyclomaticComplexity,
         CognitiveComplexity $cognitiveComplexity
     ) {
+        $this->snippetRepository = $snippetRepository;
         $this->parser = $parser;
         $this->cyclomaticComplexity = $cyclomaticComplexity;
         $this->cognitiveComplexity = $cognitiveComplexity;
     }
 
-    public function calculateComplexities(string $code): Calculation
+    public function calculateComplexities(string $code): Snippet
     {
+        $snippet = $this->snippetRepository->findOneByHash(md5($code));
+
+        if (null !== $snippet) {
+            return $snippet;
+        }
+
         $errorCollection = new Collecting();
         $ast = $this->parser->parse($code, $errorCollection);
 
@@ -36,7 +47,8 @@ final class Calculator
             throw new LogicException('Unable to parse given source code');
         }
 
-        return new Calculation(
+        return new Snippet(
+            $code,
             $this->calculateCyclomaticComplexity($ast),
             $this->calculateCognitiveComplexity($ast)
         );

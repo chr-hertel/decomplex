@@ -22,8 +22,8 @@
         </header>
         <div class="editor-container">
             <div class="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
-                {{ include('_editor.html.twig', {number: 1, identifier: 'js-editor-left', code_snippet: left}) }}
-                {{ include('_editor.html.twig', {number: 2, identifier: 'js-editor-right', code_snippet: right}) }}
+                {{ include('_editor.html.twig', {number: 1, identifier: 'js-editor-left', snippet: diff.snippetLeft|default(null)}) }}
+                {{ include('_editor.html.twig', {number: 2, identifier: 'js-editor-right', snippet: diff.snippetRight|default(null)}) }}
             </div>
             <div class="container">
                 <div>

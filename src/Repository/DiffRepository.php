@@ -14,4 +14,12 @@ class DiffRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Diff::class);
     }
+
+    /**
+     * @return array<int, Diff>
+     */
+    public function findLatest(): array
+    {
+        return $this->findBy([], ['createdAt' => 'DESC'], 10);
+    }
 }
