@@ -57,7 +57,11 @@ import 'codemirror/addon/edit/matchbrackets';
 
     var Editor = function ($wrapper) {
         this.$wrapper = $wrapper;
-        this.editor = CodeMirror.fromTextArea($wrapper.find('.editor')[0], {
+
+        let editor = $wrapper.find('.editor')[0];
+        editor.value = editor.value || decodeURI(editor.textContent);
+
+        this.editor = CodeMirror.fromTextArea(editor, {
             mode: 'php',
             lineNumbers: true,
             viewportMargin: Infinity,
