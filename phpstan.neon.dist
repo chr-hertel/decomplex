@@ -7,7 +7,7 @@ parameters:
     paths:
         - src/
         - tests/
-    autoload_files:
+    bootstrapFiles:
         - '%currentWorkingDirectory%/bin/.phpunit/phpunit-9.1.4-0/vendor/autoload.php'
     excludes_analyse:
         - tests/fixtures/*.php
