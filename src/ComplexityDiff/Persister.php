@@ -23,6 +23,10 @@ class Persister
         $leftSnippet = $this->calculator->calculateComplexities($leftCode);
         $rightSnippet = $this->calculator->calculateComplexities($rightCode);
 
+        if ($leftSnippet->equalTo($rightSnippet)) {
+            $rightSnippet = $leftSnippet;
+        }
+
         $diff = new Diff($leftSnippet, $rightSnippet);
 
         $this->entityManager->persist($diff);

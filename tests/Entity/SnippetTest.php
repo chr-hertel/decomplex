@@ -46,6 +46,20 @@ class SnippetTest extends TestCase
         static::assertSame('low', $this->snippet->getCognitiveComplexityLevel());
     }
 
+    public function testEqualToSnippet(): void
+    {
+        $snippet = new Snippet('<?php echo "Foo bar";', 5, 3);
+
+        static::assertTrue($this->snippet->equalTo($snippet));
+    }
+
+    public function testUnequalToSnippet(): void
+    {
+        $snippet = new Snippet('<?php echo "Foo Bar";', 5, 3);
+        
+        static::assertFalse($this->snippet->equalTo($snippet));
+    }
+
     /**
      * @dataProvider provideSampleComplexities
      */
