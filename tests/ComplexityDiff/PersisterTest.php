@@ -7,6 +7,7 @@ namespace App\Tests\ComplexityDiff;
 use App\ComplexityDiff\Calculator;
 use App\ComplexityDiff\Persister;
 use App\Entity\Diff;
+use App\Repository\DiffRepository;
 use App\Repository\SnippetRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;
@@ -31,7 +32,9 @@ class PersisterTest extends TestCase
             ->expects(static::once())
             ->method('flush');
 
-        $persister = new Persister($calculator, $entityManager);
+        $diffRepository = $this->createMock(DiffRepository::class);
+
+        $persister = new Persister($calculator, $entityManager, $diffRepository);
         $persister->persistDiff('<?php echo "Hello World";', '<?php echo "hallo welt";');
     }
 }

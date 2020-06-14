@@ -56,7 +56,7 @@ class SnippetTest extends TestCase
     public function testUnequalToSnippet(): void
     {
         $snippet = new Snippet('<?php echo "Foo Bar";', 5, 3);
-        
+
         static::assertFalse($this->snippet->equalTo($snippet));
     }
 
