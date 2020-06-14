@@ -74,6 +74,9 @@ header {
 .editor-wrapper {
     @apply bg-gray-400 p-4 rounded-lg shadow-lg border-b-8 relative z-10;
 
+    &.complexity-level-none {
+        @apply border-gray-500;
+    }
     &.complexity-level-low {
         @apply border-green-500;
     }
@@ -114,6 +117,9 @@ header {
 
             .metric {
                 @apply text-white text-4xl font-bold py-2 px-4 rounded-l;
+            }
+            .complexity-level-none {
+                @apply bg-gray-500;
             }
             .complexity-level-low {
                 @apply bg-green-500;

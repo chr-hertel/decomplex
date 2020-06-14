@@ -1,13 +1,17 @@
-<div id="{{ identifier }}" data-complexity-level="{{ code_snippet.complexity.complexity_level }}"
-     class="editor-wrapper complexity-level-{{ code_snippet.complexity.complexity_level }}">
+{% set default_complexity = 'X' %}
+{% set default_level = 'none' %}
+{% set default_code = '<?php\n\n// paste your code snippet to calculate complexity\n' %}
+
+<div id="{{ identifier }}" data-complexity-level="{{ snippet.complexityLevel|default(default_level) }}"
+     class="editor-wrapper complexity-level-{{ snippet.complexityLevel|default(default_level) }}">
     <i title="Copy Editor Content" class="js-copy-editor copy-editor fa fa-copy"></i>
     <h2>Editor #{{ number }}</h2>
-    <textarea class="editor">{{ code_snippet.code }}</textarea>
+    <textarea class="editor">{{ snippet.code|default(default_code) }}</textarea>
     <div class="metrics">
         <div class="complexity-badge">
-            <div class="js-cyclomatic-complexity metric complexity-level-{{ code_snippet.complexity.cyclomatic_complexity.level }}"
-                 data-complexity-level="{{ code_snippet.complexity.cyclomatic_complexity.level }}">
-                {{ code_snippet.complexity.cyclomatic_complexity.value }}
+            <div class="js-cyclomatic-complexity metric complexity-level-{{ snippet.cyclomaticComplexityLevel|default(default_level) }}"
+                 data-complexity-level="{{ snippet.cyclomaticComplexityLevel|default(default_level) }}">
+                {{ snippet.cyclomaticComplexity|default(default_complexity) }}
             </div>
             <div class="label">
                 <span>Cyclomatic</span><br />Complexity
@@ -17,9 +21,9 @@
             <i class="fas fa-sync-alt"></i>
         </button>
         <div class="complexity-badge">
-            <div class="js-cognitive-complexity metric complexity-level-{{ code_snippet.complexity.cognitive_complexity.level }}"
-                 data-complexity-level="{{ code_snippet.complexity.cognitive_complexity.level }}">
-                {{ code_snippet.complexity.cognitive_complexity.value }}
+            <div class="js-cognitive-complexity metric complexity-level-{{ snippet.cognitiveComplexityLevel|default(default_level) }}"
+                 data-complexity-level="{{ snippet.cognitiveComplexityLevel|default(default_level) }}">
+                {{ snippet.cognitiveComplexity|default(default_complexity) }}
             </div>
             <div class="label">
                 <span>Cognitive</span><br />Complexity

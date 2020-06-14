@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\ComplexityDiff\Calculator;
+use App\ComplexityDiff\Persister;
 use App\Entity\Diff;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,19 +24,10 @@ class ComplexityDiffController extends AbstractController
      * @Route("", name="index", methods={"GET"})
      * @Route("/{id<[0-9a-zA-Z\-\_]{6}>}", name="permalink", methods={"GET"})
      */
-    public function index(Calculator $calculator, Diff $diff = null): Response
+    public function index(Diff $diff = null): Response
     {
-        $diff ??= new Diff();
-
         return $this->render('index.html.twig', [
-            'left' => [
-                'code' => $diff->getCodeSnippetLeft(),
-                'complexity' => $calculator->calculateComplexities($diff->getCodeSnippetLeft())->jsonSerialize(),
-            ],
-            'right' => [
-                'code' => $diff->getCodeSnippetRight(),
-                'complexity' => $calculator->calculateComplexities($diff->getCodeSnippetRight())->jsonSerialize(),
-            ],
+            'diff' => $diff,
         ]);
     }
 
@@ -49,26 +40,23 @@ class ComplexityDiffController extends AbstractController
         $code = $request->getContent();
 
         try {
-            $calculation = $calculator->calculateComplexities($code);
+            $snippet = $calculator->calculateComplexities($code);
         } catch (\LogicException $exception) {
             throw new BadRequestHttpException($exception->getMessage(), $exception);
         }
 
-        return new JsonResponse($calculation);
+        return new JsonResponse($snippet);
     }
 
     /**
-     * @Route("permalink", name="create_permalink", methods={"POST"})
+     * @Route("permalink", name="create_permalink", methods={"POST"}, defaults={"_format": "json"})
      */
-    public function permalink(Request $request, EntityManagerInterface $entityManager): JsonResponse
+    public function permalink(Request $request, Persister $persister): JsonResponse
     {
-        $diff = new Diff(
+        $diff = $persister->persistDiff(
             $request->request->get('left', ''),
-            $request->request->get('right', '')
+            $request->request->get('right', ''),
         );
-
-        $entityManager->persist($diff);
-        $entityManager->flush();
 
         return new JsonResponse(
             $this->generateUrl('complexity_diff_permalink', ['id' => $diff->getId()], UrlGeneratorInterface::ABSOLUTE_URL)
