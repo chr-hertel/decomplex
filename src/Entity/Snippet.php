@@ -80,6 +80,11 @@ class Snippet implements \JsonSerializable
         return $this->determineComplexityLevel($this->getCognitiveComplexity());
     }
 
+    public function equalTo(Snippet $rightSnippet): bool
+    {
+        return $this->hash === $rightSnippet->hash;
+    }
+
     /**
      * @return array<string, array|string>
      */
