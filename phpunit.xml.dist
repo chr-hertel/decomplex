@@ -11,8 +11,9 @@
         <ini name="error_reporting" value="-1" />
         <server name="APP_ENV" value="test" force="true" />
         <server name="SHELL_VERBOSITY" value="-1" />
+        <server name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0" />
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
-        <server name="SYMFONY_PHPUNIT_VERSION" value="9.1.4" />
+        <server name="SYMFONY_PHPUNIT_VERSION" value="9.2.2" />
     </php>
 
     <testsuites>

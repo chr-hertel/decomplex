@@ -53,10 +53,12 @@ class ComplexityDiffController extends AbstractController
      */
     public function permalink(Request $request, Persister $persister): JsonResponse
     {
-        $diff = $persister->persistDiff(
-            $request->request->get('left', ''),
-            $request->request->get('right', ''),
-        );
+        /** @var string $leftCode */
+        $leftCode = $request->request->get('left', '');
+        /** @var string $rightCode */
+        $rightCode = $request->request->get('right', '');
+
+        $diff = $persister->persistDiff($leftCode, $rightCode);
 
         return new JsonResponse(
             $this->generateUrl('complexity_diff_permalink', ['id' => $diff->getId()], UrlGeneratorInterface::ABSOLUTE_URL)
