@@ -59,7 +59,8 @@ import 'codemirror/addon/edit/matchbrackets';
         this.$wrapper = $wrapper;
 
         let editor = $wrapper.find('.editor')[0];
-        editor.value = editor.value || decodeURI(editor.textContent);
+        // workaround to fix reinitialization on history back
+        editor.value = $(editor).text();
 
         this.editor = CodeMirror.fromTextArea(editor, {
             mode: 'php',
