@@ -1,5 +1,5 @@
 import './app.scss';
-import { ComplexityDiff } from "./js/complexity-diff";
+import { ComplexityDiff } from './js/complexity-diff';
 
 (function ($, ComplexityDiff) {
     $(document).ready(function () {
