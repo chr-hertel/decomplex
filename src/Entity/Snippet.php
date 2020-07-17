@@ -40,9 +40,14 @@ class Snippet implements \JsonSerializable
      */
     private int $cognitiveComplexity;
 
+    public static function hash(string $code): string
+    {
+        return md5($code);
+    }
+
     public function __construct(string $code, int $cyclomaticComplexity, int $cognitiveComplexity)
     {
-        $this->hash = md5($code);
+        $this->hash = static::hash($code);
         $this->code = $code;
         $this->cyclomaticComplexity = $cyclomaticComplexity;
         $this->cognitiveComplexity = $cognitiveComplexity;

@@ -34,7 +34,7 @@ final class Calculator
 
     public function calculateComplexities(string $code): Snippet
     {
-        $snippet = $this->snippetRepository->findOneByHash(md5($code));
+        $snippet = $this->snippetRepository->findOneByHash(Snippet::hash($code));
 
         if (null !== $snippet) {
             return $snippet;
