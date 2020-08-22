@@ -9,7 +9,7 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "doctrine/doctrine-bundle": "^2.0",
-        "doctrine/doctrine-migrations-bundle": "^2.1",
+        "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.7",
         "niels-de-blaauw/php-doc-check": "^0.2.2",
         "pugx/shortid-php": "^0.6.0",
@@ -44,6 +44,9 @@
         "vimeo/psalm": "^3.11"
     },
     "config": {
+        "platform": {
+            "php": "7.4.6"
+        },
         "preferred-install": {
             "*": "dist"
         },
