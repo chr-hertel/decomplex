@@ -4,7 +4,7 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": "^7.4",
+        "php": "^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
@@ -12,7 +12,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.7",
         "niels-de-blaauw/php-doc-check": "^0.2.2",
-        "pugx/shortid-php": "^0.6.0",
+        "pugx/shortid-php": "^0.7.0",
         "sensio/framework-extra-bundle": "^5.5",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",
@@ -28,11 +28,10 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
-        "infection/infection": "^0.16.3",
+        "infection/infection": "^0.25.3",
         "phpmd/phpmd": "^2.8",
         "phpstan/phpstan": "^0.12.23",
         "phpstan/phpstan-phpunit": "^0.12.8",
-        "sensiolabs/security-checker": "^6.0",
         "spatie/phpunit-snapshot-assertions": "^4.1",
         "symfony/browser-kit": "5.1.*",
         "symfony/css-selector": "5.1.*",
@@ -41,11 +40,11 @@
         "symfony/stopwatch": "5.1.*",
         "symfony/var-dumper": "5.1.*",
         "symfony/web-profiler-bundle": "5.1.*",
-        "vimeo/psalm": "^3.11"
+        "vimeo/psalm": "^4.12.0"
     },
     "config": {
         "platform": {
-            "php": "7.4.6"
+            "php": "8.0.13"
         },
         "preferred-install": {
             "*": "dist"
@@ -75,8 +74,7 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "security-checker security:check": "script"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
