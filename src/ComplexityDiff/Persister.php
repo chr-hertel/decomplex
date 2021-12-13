@@ -12,18 +12,11 @@ use LogicException;
 
 class Persister
 {
-    private Calculator $calculator;
-    private EntityManagerInterface $entityManager;
-    private DiffRepository $diffRepository;
-
     public function __construct(
-        Calculator $calculator,
-        EntityManagerInterface $entityManager,
-        DiffRepository $diffRepository
+        private Calculator $calculator,
+        private EntityManagerInterface $entityManager,
+        private DiffRepository $diffRepository,
     ) {
-        $this->calculator = $calculator;
-        $this->entityManager = $entityManager;
-        $this->diffRepository = $diffRepository;
     }
 
     public function persistDiff(string $leftCode, string $rightCode): Diff

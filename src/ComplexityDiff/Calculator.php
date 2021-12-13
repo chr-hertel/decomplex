@@ -15,21 +15,12 @@ use PhpParser\Parser;
 
 final class Calculator
 {
-    private SnippetRepository $snippetRepository;
-    private Parser $parser;
-    private CyclomaticComplexity $cyclomaticComplexity;
-    private CognitiveComplexity $cognitiveComplexity;
-
     public function __construct(
-        SnippetRepository $snippetRepository,
-        Parser $parser,
-        CyclomaticComplexity $cyclomaticComplexity,
-        CognitiveComplexity $cognitiveComplexity
+        private SnippetRepository $snippetRepository,
+        private Parser $parser,
+        private CyclomaticComplexity $cyclomaticComplexity,
+        private CognitiveComplexity $cognitiveComplexity,
     ) {
-        $this->snippetRepository = $snippetRepository;
-        $this->parser = $parser;
-        $this->cyclomaticComplexity = $cyclomaticComplexity;
-        $this->cognitiveComplexity = $cognitiveComplexity;
     }
 
     public function calculateComplexities(string $code): Snippet

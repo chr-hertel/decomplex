@@ -11,6 +11,8 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Diff|null findOneBy(array $criteria, array $orderBy = null)
+ *
+ * @extends ServiceEntityRepository<Diff>
  */
 class DiffRepository extends ServiceEntityRepository
 {
