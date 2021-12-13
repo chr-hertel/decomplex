@@ -8,19 +8,10 @@ monolog:
             buffer_size: 50 # How many messages should be saved? Prevent memory leaks
         nested:
             type: stream
-            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            path: php://stderr
             level: debug
+            formatter: monolog.formatter.json
         console:
             type: console
             process_psr_3_messages: false
             channels: ["!event", "!doctrine"]
-
-        # Uncomment to log deprecations
-        #deprecation:
-        #    type: stream
-        #    path: "%kernel.logs_dir%/%kernel.environment%.deprecations.log"
-        #deprecation_filter:
-        #    type: filter
-        #    handler: deprecation
-        #    max_level: info
-        #    channels: ["php"]

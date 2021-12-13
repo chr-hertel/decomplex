@@ -10,6 +10,8 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Snippet|null findOneByHash(string $md5)
+ *
+ * @extends ServiceEntityRepository<Snippet>
  */
 class SnippetRepository extends ServiceEntityRepository
 {

@@ -15,15 +15,11 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-/**
- * @Route("/", name="complexity_diff_")
- */
+#[Route('/', name: 'complexity_diff_')]
 class ComplexityDiffController extends AbstractController
 {
-    /**
-     * @Route("", name="index", methods={"GET"})
-     * @Route("/{id<[0-9a-zA-Z\-\_]{6}>}", name="permalink", methods={"GET"})
-     */
+    #[Route('', name: 'index', methods: ['GET'])]
+    #[Route('/{id<[0-9a-zA-Z\-\_]{6}>}', name: 'permalink', methods: ['GET'])]
     public function index(Diff $diff = null): Response
     {
         return $this->render('index.html.twig', [
@@ -31,9 +27,7 @@ class ComplexityDiffController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("calculate", name="calculate", methods={"POST"}, defaults={"_format": "json"})
-     */
+    #[Route('calculate', name: 'calculate', methods: ['POST'], defaults: ['_format' => 'json'])]
     public function calculate(Request $request, Calculator $calculator): JsonResponse
     {
         /** @var string $code */
@@ -51,12 +45,11 @@ class ComplexityDiffController extends AbstractController
     /**
      * @Route("permalink", name="create_permalink", methods={"POST"}, defaults={"_format": "json"})
      */
+    #[Route('permalink', name: 'create_permalink', methods: ['POST'], defaults: ['_format' => 'json'])]
     public function permalink(Request $request, Persister $persister): JsonResponse
     {
-        /** @var string $leftCode */
-        $leftCode = $request->request->get('left', '');
-        /** @var string $rightCode */
-        $rightCode = $request->request->get('right', '');
+        $leftCode = (string) $request->request->get('left', '');
+        $rightCode = (string) $request->request->get('right', '');
 
         $diff = $persister->persistDiff($leftCode, $rightCode);
 

@@ -87,7 +87,7 @@ class SnippetTest extends TestCase
     }
 
     /**
-     * @return array<int,array>
+     * @return array<int,array{0: int, 1: string, 2: int, 3: string, 4: string}>
      */
     public function provideSampleComplexities(): array
     {

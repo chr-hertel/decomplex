@@ -1,14 +1,25 @@
 includes:
     - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-phpunit/rules.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-symfony/rules.neon
 
 parameters:
-    level: max
+    level: 8
     paths:
         - src/
         - tests/
     bootstrapFiles:
-        - '%currentWorkingDirectory%/bin/.phpunit/phpunit-9.1.4-0/vendor/autoload.php'
-    excludes_analyse:
+        - '%currentWorkingDirectory%/vendor/bin/.phpunit/phpunit-9.5.10-0/vendor/autoload.php'
+    excludePaths:
         - tests/fixtures/*.php
         - tests/bootstrap.php
+    symfony:
+        container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
+    scanDirectories:
+        - var/cache/dev/Symfony/Config
+    ignoreErrors:
+        -
+            message: '#^Property App\\Entity\\[a-zA-Z]+::\$id is (never written, only read|unused).$#'
+            count: 1
+            path: src/Entity/*

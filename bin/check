@@ -10,7 +10,6 @@ symfony console lint:container
 symfony php vendor/bin/php-cs-fixer fix --dry-run
 npm run check-style
 
-symfony php vendor/bin/security-checker security:check
 npm audit
 
 symfony php vendor/bin/phpstan analyse

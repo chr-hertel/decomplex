@@ -39,7 +39,7 @@ class CalculatorTest extends TestCase
     }
 
     /**
-     * @return array<int,array>
+     * @return array<int,array{0: string, 1: int, 2: int}>
      */
     public function provideCodeSnippets(): array
     {

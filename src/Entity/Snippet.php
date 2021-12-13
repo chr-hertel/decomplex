@@ -6,51 +6,32 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 class Snippet implements \JsonSerializable
 {
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
-     *
      * @psalm-suppress PropertyNotSetInConstructor
      */
+    #[ORM\Id, ORM\Column(type: 'integer'), ORM\GeneratedValue]
     private int $id;
 
-    /**
-     * @ORM\Column(unique=true)
-     */
+    #[ORM\Column(unique: true)]
     private string $hash;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    private string $code;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private int $cyclomaticComplexity;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private int $cognitiveComplexity;
+    public function __construct(
+        #[ORM\Column(type: 'text')]
+        private string $code,
+        #[ORM\Column(type: 'integer')]
+        private int $cyclomaticComplexity,
+        #[ORM\Column(type: 'integer')]
+        private int $cognitiveComplexity,
+    ) {
+        $this->hash = static::hash($code);
+    }
 
     public static function hash(string $code): string
     {
         return md5($code);
-    }
-
-    public function __construct(string $code, int $cyclomaticComplexity, int $cognitiveComplexity)
-    {
-        $this->hash = static::hash($code);
-        $this->code = $code;
-        $this->cyclomaticComplexity = $cyclomaticComplexity;
-        $this->cognitiveComplexity = $cognitiveComplexity;
     }
 
     public function getHash(): string
@@ -96,7 +77,7 @@ class Snippet implements \JsonSerializable
     }
 
     /**
-     * @return array<string, array|string>
+     * @return array<string, string|array<string, int|string>>
      */
     public function jsonSerialize(): array
     {
