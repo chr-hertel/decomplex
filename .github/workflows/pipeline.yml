@@ -1,0 +1,61 @@
+name: pipeline
+on: pull_request
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Cache Vendors
+        uses: actions/cache@v2
+        id: cache-vendors
+        with:
+          path: vendor
+          key: ${{ runner.os }}-vendor-${{ hashFiles('**/composer.lock')}}
+
+      - name: Composer Validation
+        run: composer validate --strict
+
+      - name: Install PHP Dependencies
+        run: composer install --no-scripts
+
+      - name: Lint Yaml Files
+        run: bin/console lint:yaml config --parse-tags
+
+      - name: Lint Templates
+        run: bin/console lint:twig templates
+
+      - name: Lint Container
+        run: bin/console lint:container
+
+      - name: Code Style PHP
+        run: vendor/bin/php-cs-fixer fix --dry-run
+
+      - name: Cache Node Modules
+        uses: actions/cache@v2
+        id: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json')}}
+
+      - name: Install NPM Dependencies
+        run: npm clean-install
+
+      - name: Code Style CSS & JS
+        run: npm run check-style
+
+      - name: PHPStan
+        run: vendor/bin/phpstan analyse
+
+      - name: Psalm
+        run: php vendor/bin/psalm --show-info=true
+
+      - name: Tests
+        run: vendor/bin/phpunit

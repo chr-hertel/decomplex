@@ -17,6 +17,9 @@
     "composer/xdebug-handler": {
         "version": "2.0.3"
     },
+    "deployer/deployer": {
+        "version": "v7.0.0-rc.8"
+    },
     "dnoegel/php-xdg-base-dir": {
         "version": "v0.1.1"
     },
