@@ -1,0 +1,18 @@
+import: 
+  - recipe/symfony.php
+
+config:
+  repository: 'git@github.com:chr-hertel/decomplex.git'
+
+hosts:
+  decomplex.me:
+    remote_user: deployer
+    deploy_path: '~/decomplex.me'
+
+tasks:
+  build:
+    - cd: '{{release_path}}'
+    - run: 'npm run build'  
+
+after:
+  deploy:failed: deploy:unlock

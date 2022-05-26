@@ -29,6 +29,7 @@
         "twig/twig": "^3.4"
     },
     "require-dev": {
+        "deployer/deployer": "^7.0@RC",
         "friendsofphp/php-cs-fixer": "^3.4",
         "infection/infection": "^0.26",
         "pdepend/pdepend": "2.x-dev",

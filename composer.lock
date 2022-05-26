@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5172b7f8d65884f60a450fc1b27051a",
+    "content-hash": "fba1207d244feda5a551c1b52ed03a1e",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -5828,6 +5828,49 @@
             "time": "2022-02-25T21:32:43+00:00"
         },
         {
+            "name": "deployer/deployer",
+            "version": "v7.0.0-rc.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deployphp/deployer.git",
+                "reference": "629973ee3d0ce78953b18500cba0695feec28c2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deployphp/deployer/zipball/629973ee3d0ce78953b18500cba0695feec28c2b",
+                "reference": "629973ee3d0ce78953b18500cba0695feec28c2b",
+                "shasum": ""
+            },
+            "bin": [
+                "deployer.phar"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Medvedev",
+                    "email": "anton@medv.io"
+                }
+            ],
+            "description": "Deployment Tool",
+            "homepage": "https://deployer.org",
+            "support": {
+                "docs": "https://deployer.org/docs",
+                "issues": "https://github.com/deployphp/deployer/issues",
+                "source": "https://github.com/deployphp/deployer"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/antonmedv",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-22T14:33:06+00:00"
+        },
+        {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
             "source": {
@@ -10259,6 +10302,7 @@
     "aliases": [],
     "minimum-stability": "RC",
     "stability-flags": {
+        "deployer/deployer": 5,
         "pdepend/pdepend": 20
     },
     "prefer-stable": false,
