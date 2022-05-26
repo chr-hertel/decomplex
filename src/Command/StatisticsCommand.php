@@ -17,8 +17,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class StatisticsCommand extends Command
 {
     public function __construct(
-        private DiffRepository $diffRepository,
-        private SnippetRepository $snippetRepository,
+        private readonly DiffRepository $diffRepository,
+        private readonly SnippetRepository $snippetRepository,
     ) {
         parent::__construct();
     }

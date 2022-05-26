@@ -3,56 +3,62 @@
     "description": "Slim web interface to diff complexity of code snippets",
     "type": "project",
     "license": "MIT",
+    "minimum-stability": "RC",
     "require": {
         "php": "^8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
-        "doctrine/doctrine-bundle": "^2.5",
+        "doctrine/doctrine-bundle": "^2.6",
         "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.10",
-        "niels-de-blaauw/php-doc-check": "^0.2.2",
-        "pugx/shortid-php": "^0.7.0",
+        "doctrine/orm": "^2.12",
+        "niels-de-blaauw/php-doc-check": "^0.2",
+        "pugx/shortid-php": "^1.0",
         "sensio/framework-extra-bundle": "^6.2",
-        "symfony/asset": "6.0.*",
-        "symfony/console": "6.0.*",
-        "symfony/dotenv": "6.0.*",
-        "symfony/flex": "^1.17",
-        "symfony/framework-bundle": "6.0.*",
-        "symfony/monolog-bundle": "^3.5",
-        "symfony/runtime": "6.0.*",
-        "symfony/twig-bundle": "6.0.*",
-        "symfony/webpack-encore-bundle": "^1.7",
-        "symfony/yaml": "6.0.*",
-        "twig/extra-bundle": "^3.0",
-        "twig/twig": "^3.0"
+        "symfony/asset": "^6.1",
+        "symfony/console": "^6.1",
+        "symfony/dotenv": "^6.1",
+        "symfony/flex": "^2.1",
+        "symfony/framework-bundle": "^6.1",
+        "symfony/monolog-bundle": "^3.8",
+        "symfony/runtime": "^6.1",
+        "symfony/twig-bundle": "^6.1",
+        "symfony/webpack-encore-bundle": "^1.14",
+        "symfony/yaml": "^6.1",
+        "twig/extra-bundle": "^3.4",
+        "twig/twig": "^3.4"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "infection/infection": "^0.25.3",
-        "phpmd/phpmd": "^2.10",
+        "friendsofphp/php-cs-fixer": "^3.4",
+        "infection/infection": "^0.26",
         "pdepend/pdepend": "2.x-dev",
-        "phpstan/phpstan": "^1.2",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "phpstan/phpstan-symfony": "^1.0",
-        "spatie/phpunit-snapshot-assertions": "^4.1",
-        "symfony/browser-kit": "6.0.*",
-        "symfony/css-selector": "6.0.*",
-        "symfony/debug-bundle": "6.0.*",
-        "symfony/phpunit-bridge": "6.0.*",
-        "symfony/stopwatch": "6.0.*",
-        "symfony/var-dumper": "6.0.*",
-        "symfony/web-profiler-bundle": "6.0.*",
-        "vimeo/psalm": "^4.12.0"
+        "phpmd/phpmd": "^2.12",
+        "phpstan/phpstan": "^1.7",
+        "phpstan/phpstan-phpunit": "^1.1",
+        "phpstan/phpstan-symfony": "^1.1",
+        "phpunit/phpunit": "^9.5",
+        "spatie/phpunit-snapshot-assertions": "^4.2",
+        "symfony/browser-kit": "^6.1",
+        "symfony/css-selector": "^6.1",
+        "symfony/debug-bundle": "^6.1",
+        "symfony/stopwatch": "^6.1",
+        "symfony/var-dumper": "^6.1",
+        "symfony/web-profiler-bundle": "^6.1",
+        "vimeo/psalm": "^4.23.0"
     },
     "config": {
         "platform": {
-            "php": "8.1.0"
+            "php": "8.1.6"
         },
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        }
     },
     "autoload": {
         "psr-4": {
@@ -66,9 +72,13 @@
     },
     "replace": {
         "paragonie/random_compat": "2.*",
-        "phpunit/phpunit": "^9.5.10",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-mbstring": "*",
+        "symfony/polyfill-php81": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php73": "*",
         "symfony/polyfill-php72": "*",
         "symfony/polyfill-php71": "*",
         "symfony/polyfill-php70": "*",
@@ -92,7 +102,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.0.*",
+            "require": "6.1.*",
             "docker": false
         }
     }

@@ -16,5 +16,5 @@ symfony php vendor/bin/phpstan analyse
 symfony php vendor/bin/psalm --show-info=true
 symfony php vendor/bin/phpmd src ansi cleancode,codesize,design,naming,unusedcode,controversial
 
-symfony php bin/phpunit
+symfony php vendor/bin/phpunit
 symfony php vendor/bin/infection

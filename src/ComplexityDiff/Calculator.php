@@ -16,10 +16,10 @@ use PhpParser\Parser;
 final class Calculator
 {
     public function __construct(
-        private SnippetRepository $snippetRepository,
-        private Parser $parser,
-        private CyclomaticComplexity $cyclomaticComplexity,
-        private CognitiveComplexity $cognitiveComplexity,
+        private readonly SnippetRepository $snippetRepository,
+        private readonly Parser $parser,
+        private readonly CyclomaticComplexity $cyclomaticComplexity,
+        private readonly CognitiveComplexity $cognitiveComplexity,
     ) {
     }
 

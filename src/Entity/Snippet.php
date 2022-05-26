@@ -20,11 +20,11 @@ class Snippet implements \JsonSerializable
 
     public function __construct(
         #[ORM\Column(type: 'text')]
-        private string $code,
+        private readonly string $code,
         #[ORM\Column(type: 'integer')]
-        private int $cyclomaticComplexity,
+        private readonly int $cyclomaticComplexity,
         #[ORM\Column(type: 'integer')]
-        private int $cognitiveComplexity,
+        private readonly int $cognitiveComplexity,
     ) {
         $this->hash = static::hash($code);
     }

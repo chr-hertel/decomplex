@@ -13,9 +13,9 @@ use LogicException;
 class Persister
 {
     public function __construct(
-        private Calculator $calculator,
-        private EntityManagerInterface $entityManager,
-        private DiffRepository $diffRepository,
+        private readonly Calculator $calculator,
+        private readonly EntityManagerInterface $entityManager,
+        private readonly DiffRepository $diffRepository,
     ) {
     }
 

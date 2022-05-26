@@ -21,9 +21,9 @@ class Diff
 
     public function __construct(
         #[ORM\ManyToOne(targetEntity: Snippet::class, fetch: 'EAGER', cascade: ['persist'])]
-        private Snippet $snippetLeft,
+        private readonly Snippet $snippetLeft,
         #[ORM\ManyToOne(targetEntity: Snippet::class, fetch: 'EAGER', cascade: ['persist'])]
-        private Snippet $snippetRight,
+        private readonly Snippet $snippetRight,
     ) {
         $this->id = (string) Shortid::generate(6);
         $this->createdAt = new DateTimeImmutable();

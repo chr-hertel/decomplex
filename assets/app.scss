@@ -4,7 +4,7 @@
 @import '@fortawesome/fontawesome-free/css/all';
 
 body {
-    @apply bg-gray-300 font-sans text-gray-700;
+    @apply bg-gray-200 font-sans text-gray-700;
 }
 
 .github-ribbon {
@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    @apply bg-gray-500 text-gray-800 border-b-2 border-gray-400;
+    @apply bg-gray-300 text-gray-800 border-b-2 border-gray-200;
 
     div.container {
         @apply mx-auto px-5 py-3 flex justify-between;
@@ -28,29 +28,29 @@ header {
     }
 
     a {
-        @apply text-gray-200 text-lg font-bold bg-gray-600 rounded px-2 py-1;
+        @apply text-gray-100 text-lg font-bold bg-gray-400 rounded px-2 py-1;
 
         &:hover {
-            @apply bg-gray-700;
+            @apply bg-gray-500;
         }
     }
 }
 
 .editor-container {
-    @apply p-10 bg-gray-100 border-b border-gray-400;
+    @apply p-10 bg-gray-100 border-b border-gray-300;
 
-    .container {
+    .share {
         @apply px-5 mx-auto mt-10;
 
         div {
-            @apply bg-gray-500 p-3 rounded-lg text-2xl flex;
+            @apply bg-gray-400 p-3 rounded-lg text-2xl flex;
         }
 
         button {
-            @apply bg-gray-400 flex-none px-4 py-2 font-bold;
+            @apply bg-gray-300 flex-none px-4 py-2 font-bold;
         }
         button:hover {
-            @apply bg-gray-300;
+            @apply bg-gray-200;
         }
 
         button.permalink-create {
@@ -66,25 +66,25 @@ header {
         }
 
         span {
-            @apply text-gray-600 pl-3;
+            @apply text-gray-500 pl-3;
         }
     }
 }
 
 .editor-wrapper {
-    @apply bg-gray-400 p-4 rounded-lg shadow-lg border-b-8 relative z-10;
+    @apply bg-gray-300 p-4 rounded-lg shadow-lg border-b-8 relative z-10;
 
     &.complexity-level-none {
-        @apply border-gray-500;
+        @apply border-gray-400;
     }
     &.complexity-level-low {
         @apply border-green-500;
     }
     &.complexity-level-moderate {
-        @apply border-yellow-500;
+        @apply border-yellow-300;
     }
     &.complexity-level-high {
-        @apply border-orange-500;
+        @apply border-yellow-500;
     }
     &.complexity-level-very-high {
         @apply border-red-500;
@@ -95,10 +95,10 @@ header {
     }
 
     .copy-editor {
-        @apply float-right text-gray-600 cursor-pointer;
+        @apply float-right text-gray-500 cursor-pointer;
     }
     .copy-editor:hover {
-        @apply text-gray-700;
+        @apply text-gray-600;
     }
 
     .editor {
@@ -117,18 +117,19 @@ header {
 
             .metric {
                 @apply text-white text-4xl font-bold py-2 px-4 rounded-l;
+                line-height: 1.5;
             }
             .complexity-level-none {
-                @apply bg-gray-500;
+                @apply bg-gray-400;
             }
             .complexity-level-low {
                 @apply bg-green-500;
             }
             .complexity-level-moderate {
-                @apply bg-yellow-500;
+                @apply bg-yellow-300;
             }
             .complexity-level-high {
-                @apply bg-orange-500;
+                @apply bg-yellow-500;
             }
             .complexity-level-very-high {
                 @apply bg-red-500;
@@ -164,10 +165,10 @@ header {
         background: linear-gradient(
             to right,
             theme('colors.green.500') 19%,
-            theme('colors.yellow.500') 27%,
-            theme('colors.yellow.500') 46%,
-            theme('colors.orange.500') 54%,
-            theme('colors.orange.500') 73%,
+            theme('colors.yellow.300') 27%,
+            theme('colors.yellow.300') 46%,
+            theme('colors.yellow.500') 54%,
+            theme('colors.yellow.500') 73%,
             theme('colors.red.500') 81%
         );
 
