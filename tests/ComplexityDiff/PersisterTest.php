@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\ComplexityDiff;
 
-use App\ComplexityDiff\Calculator;
-use App\ComplexityDiff\Persister;
+use App\DeComplex\Calculator;
+use App\DeComplex\Persister;
 use App\Entity\Diff;
 use App\Repository\DiffRepository;
 use App\Repository\SnippetRepository;

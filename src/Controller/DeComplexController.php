@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\ComplexityDiff\Calculator;
-use App\ComplexityDiff\Persister;
+use App\DeComplex\Calculator;
+use App\DeComplex\Persister;
 use App\Entity\Diff;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,8 +15,8 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-#[Route('/', name: 'complexity_diff_')]
-class ComplexityDiffController extends AbstractController
+#[Route('/', name: 'decomplex_')]
+final class DeComplexController extends AbstractController
 {
     #[Route('', name: 'index', methods: ['GET'])]
     #[Route('/{id<[0-9a-zA-Z\-\_]{6}>}', name: 'permalink', methods: ['GET'])]
@@ -42,9 +42,6 @@ class ComplexityDiffController extends AbstractController
         return new JsonResponse($snippet);
     }
 
-    /**
-     * @Route("permalink", name="create_permalink", methods={"POST"}, defaults={"_format": "json"})
-     */
     #[Route('permalink', name: 'create_permalink', methods: ['POST'], defaults: ['_format' => 'json'])]
     public function permalink(Request $request, Persister $persister): JsonResponse
     {
@@ -54,7 +51,7 @@ class ComplexityDiffController extends AbstractController
         $diff = $persister->persistDiff($leftCode, $rightCode);
 
         return new JsonResponse(
-            $this->generateUrl('complexity_diff_permalink', ['id' => $diff->getId()], UrlGeneratorInterface::ABSOLUTE_URL)
+            $this->generateUrl('decomplex_permalink', ['id' => $diff->getId()], UrlGeneratorInterface::ABSOLUTE_URL)
         );
     }
 }
