@@ -3,7 +3,6 @@
     "description": "Slim web interface to diff complexity of code snippets",
     "type": "project",
     "license": "MIT",
-    "minimum-stability": "RC",
     "require": {
         "php": "^8.1",
         "ext-ctype": "*",
