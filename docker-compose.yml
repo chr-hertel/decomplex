@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
     database:
-        image: 'postgres:13'
+        image: 'postgres:11'
         ports:
             - '8432:5432'
         environment:
