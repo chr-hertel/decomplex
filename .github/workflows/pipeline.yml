@@ -83,3 +83,10 @@ jobs:
 
       - name: Tests
         run: vendor/bin/phpunit
+
+      - name: Archive Test Logs
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-logs
+          path: var/log/test.log
