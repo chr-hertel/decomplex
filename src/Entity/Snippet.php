@@ -7,7 +7,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class Snippet implements \JsonSerializable
+final class Snippet implements \JsonSerializable
 {
     /**
      * @psalm-suppress PropertyNotSetInConstructor

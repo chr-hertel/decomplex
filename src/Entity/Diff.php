@@ -11,7 +11,7 @@ use PUGX\Shortid\Shortid;
 
 #[ORM\Entity(repositoryClass: DiffRepository::class)]
 #[ORM\UniqueConstraint(name: 'snippets_combi', columns: ['snippet_left_id', 'snippet_right_id'])]
-class Diff
+final class Diff
 {
     #[ORM\Id, ORM\Column(length: 6), ORM\GeneratedValue(strategy: 'NONE')]
     private string $id;

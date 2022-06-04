@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand('app:statistics')]
-class StatisticsCommand extends Command
+final class StatisticsCommand extends Command
 {
     public function __construct(
         private readonly DiffRepository $diffRepository,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ComplexityDiff;
+namespace App\DeComplex;
 
 use App\Entity\Diff;
 use App\Repository\DiffRepository;
@@ -10,7 +10,7 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use LogicException;
 
-class Persister
+final class Persister
 {
     public function __construct(
         private readonly Calculator $calculator,

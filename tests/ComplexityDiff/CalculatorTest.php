@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\ComplexityDiff;
 
-use App\ComplexityDiff\Calculator;
+use App\DeComplex\Calculator;
 use App\Entity\Snippet;
 use App\Repository\SnippetRepository;
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;

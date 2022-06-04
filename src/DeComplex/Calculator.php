@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ComplexityDiff;
+namespace App\DeComplex;
 
 use App\Entity\Snippet;
 use App\Repository\SnippetRepository;
