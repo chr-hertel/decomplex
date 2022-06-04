@@ -1730,16 +1730,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.13.2",
+            "version": "v4.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "210577fe3cf7badcc5814d99455df46564f3c077"
+                "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/210577fe3cf7badcc5814d99455df46564f3c077",
-                "reference": "210577fe3cf7badcc5814d99455df46564f3c077",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/34bea19b6e03d8153165d8f30bba4c3be86184c1",
+                "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1",
                 "shasum": ""
             },
             "require": {
@@ -1780,9 +1780,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.2"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.14.0"
             },
-            "time": "2021-11-30T19:35:32+00:00"
+            "time": "2022-05-31T20:59:12+00:00"
         },
         {
             "name": "paragonie/random-lib",
@@ -7319,16 +7319,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.7.2",
+            "version": "1.7.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c602f80d66ba425943b0f4aaa27010c822dd8f87"
+                "reference": "25e069474cf00215b0f64c60a26230908ef3eefa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c602f80d66ba425943b0f4aaa27010c822dd8f87",
-                "reference": "c602f80d66ba425943b0f4aaa27010c822dd8f87",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/25e069474cf00215b0f64c60a26230908ef3eefa",
+                "reference": "25e069474cf00215b0f64c60a26230908ef3eefa",
                 "shasum": ""
             },
             "require": {
@@ -7354,7 +7354,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.7.2"
+                "source": "https://github.com/phpstan/phpstan/tree/1.7.10"
             },
             "funding": [
                 {
@@ -7374,7 +7374,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-26T12:59:20+00:00"
+            "time": "2022-06-03T14:12:23+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
@@ -7430,22 +7430,22 @@
         },
         {
             "name": "phpstan/phpstan-symfony",
-            "version": "1.1.8",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-symfony.git",
-                "reference": "4bdffcf1033b6c60662a28419d0192e0dda5684f"
+                "reference": "30f12aeab960c7f324eee3b39645655cf8a84146"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-symfony/zipball/4bdffcf1033b6c60662a28419d0192e0dda5684f",
-                "reference": "4bdffcf1033b6c60662a28419d0192e0dda5684f",
+                "url": "https://api.github.com/repos/phpstan/phpstan-symfony/zipball/30f12aeab960c7f324eee3b39645655cf8a84146",
+                "reference": "30f12aeab960c7f324eee3b39645655cf8a84146",
                 "shasum": ""
             },
             "require": {
                 "ext-simplexml": "*",
-                "php": "^7.1 || ^8.0",
-                "phpstan/phpstan": "^1.4"
+                "php": "^7.2 || ^8.0",
+                "phpstan/phpstan": "^1.6"
             },
             "conflict": {
                 "symfony/framework-bundle": "<3.0"
@@ -7469,9 +7469,6 @@
             },
             "type": "phpstan-extension",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
                 "phpstan": {
                     "includes": [
                         "extension.neon",
@@ -7498,9 +7495,9 @@
             "description": "Symfony Framework extensions and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-symfony/issues",
-                "source": "https://github.com/phpstan/phpstan-symfony/tree/1.1.8"
+                "source": "https://github.com/phpstan/phpstan-symfony/tree/1.2.2"
             },
-            "time": "2022-03-24T07:56:03+00:00"
+            "time": "2022-05-28T15:18:51+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -9076,16 +9073,16 @@
         },
         {
             "name": "spatie/phpunit-snapshot-assertions",
-            "version": "4.2.11",
+            "version": "4.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/phpunit-snapshot-assertions.git",
-                "reference": "3c34fd460419b273b23bc7c8f72c18894b79a040"
+                "reference": "69a525ff2041d10b3fdec38ab19844158c3d3294"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/3c34fd460419b273b23bc7c8f72c18894b79a040",
-                "reference": "3c34fd460419b273b23bc7c8f72c18894b79a040",
+                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/69a525ff2041d10b3fdec38ab19844158c3d3294",
+                "reference": "69a525ff2041d10b3fdec38ab19844158c3d3294",
                 "shasum": ""
             },
             "require": {
@@ -9131,7 +9128,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/phpunit-snapshot-assertions/issues",
-                "source": "https://github.com/spatie/phpunit-snapshot-assertions/tree/4.2.11"
+                "source": "https://github.com/spatie/phpunit-snapshot-assertions/tree/4.2.12"
             },
             "funding": [
                 {
@@ -9139,7 +9136,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-03-18T08:44:50+00:00"
+            "time": "2022-05-31T14:34:27+00:00"
         },
         {
             "name": "symfony/browser-kit",
@@ -10197,21 +10194,21 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "6964c76c7804814a842473e0c8fd15bab0f18e25"
+                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/6964c76c7804814a842473e0c8fd15bab0f18e25",
-                "reference": "6964c76c7804814a842473e0c8fd15bab0f18e25",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/11cb2199493b2f8a3b53e7f19068fc6aac760991",
+                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || ^8.0",
-                "symfony/polyfill-ctype": "^1.8"
+                "ext-ctype": "*",
+                "php": "^7.2 || ^8.0"
             },
             "conflict": {
                 "phpstan/phpstan": "<0.12.20",
@@ -10249,9 +10246,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/1.10.0"
+                "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
-            "time": "2021-03-09T10:59:23+00:00"
+            "time": "2022-06-03T18:03:27+00:00"
         },
         {
             "name": "webmozart/path-util",
