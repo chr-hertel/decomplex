@@ -78,5 +78,8 @@ jobs:
           bin/console doctrine:database:create --env=test --no-interaction
           bin/console doctrine:schema:create --env=test --no-interaction
 
+      - name: Frontend Build
+        run: npm run build
+
       - name: Tests
         run: vendor/bin/phpunit
