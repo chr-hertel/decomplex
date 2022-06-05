@@ -18,7 +18,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          - 5432:5432
+          - 8432:5432
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -74,7 +74,7 @@ jobs:
 
       - name: Setup Database
         run: |
-          echo 'DATABASE_URL="postgresql://postgres:password@localhost:5432/symfony?serverVersion=11.0"' > .env.test.local
+          echo 'DATABASE_URL="postgresql://postgres:password@localhost:8432/symfony?serverVersion=11.0"' > .env.test.local
           bin/console doctrine:database:create --env=test --no-interaction
           bin/console doctrine:schema:create --env=test --no-interaction
 
