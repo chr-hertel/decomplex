@@ -50,6 +50,9 @@ jobs:
       - name: Lint Container
         run: bin/console lint:container
 
+      - name: Build Symfony Cache
+        run: bin/console cache:warmup --env=prod
+
       - name: Code Style PHP
         run: vendor/bin/php-cs-fixer fix --dry-run
 
