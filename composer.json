@@ -14,6 +14,7 @@
         "niels-de-blaauw/php-doc-check": "^0.2",
         "pugx/shortid-php": "^1.0",
         "sensio/framework-extra-bundle": "^6.2",
+        "sentry/sentry-symfony": "^4.3",
         "symfony/asset": "^6.1",
         "symfony/console": "^6.1",
         "symfony/dotenv": "^6.1",

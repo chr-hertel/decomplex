@@ -5,6 +5,9 @@
     "amphp/byte-stream": {
         "version": "v1.8.1"
     },
+    "clue/stream-filter": {
+        "version": "v1.6.0"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.4"
     },
@@ -120,6 +123,15 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
+    "guzzlehttp/promises": {
+        "version": "1.5.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "2.4.0"
+    },
+    "http-interop/http-factory-guzzle": {
+        "version": "1.2.0"
+    },
     "infection/abstract-testframework-adapter": {
         "version": "0.5.0"
     },
@@ -134,6 +146,9 @@
     },
     "ircmaxell/security-lib": {
         "version": "v1.1.0"
+    },
+    "jean85/pretty-package-versions": {
+        "version": "2.0.5"
     },
     "justinrainbow/json-schema": {
         "version": "5.2.11"
@@ -182,6 +197,24 @@
     },
     "php-cs-fixer/diff": {
         "version": "v2.0.2"
+    },
+    "php-http/client-common": {
+        "version": "2.5.0"
+    },
+    "php-http/discovery": {
+        "version": "1.14.2"
+    },
+    "php-http/httplug": {
+        "version": "2.3.0"
+    },
+    "php-http/message": {
+        "version": "1.13.0"
+    },
+    "php-http/message-factory": {
+        "version": "v1.0.2"
+    },
+    "php-http/promise": {
+        "version": "1.1.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -245,11 +278,23 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/log": {
         "version": "3.0.0"
     },
     "pugx/shortid-php": {
         "version": "v0.7.0"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sanmai/later": {
         "version": "0.1.2"
@@ -318,6 +363,24 @@
         },
         "files": [
             "config/packages/sensio_framework_extra.yaml"
+        ]
+    },
+    "sentry/sdk": {
+        "version": "3.2.0"
+    },
+    "sentry/sentry": {
+        "version": "3.6.0"
+    },
+    "sentry/sentry-symfony": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "9746f0823302d7980e5273ef7a69ef3f5ac80914"
+        },
+        "files": [
+            "config/packages/sentry.yaml"
         ]
     },
     "spatie/phpunit-snapshot-assertions": {
@@ -426,6 +489,12 @@
             "src/Kernel.php"
         ]
     },
+    "symfony/http-client": {
+        "version": "v6.1.1"
+    },
+    "symfony/http-client-contracts": {
+        "version": "v3.1.0"
+    },
     "symfony/http-foundation": {
         "version": "v6.0.1"
     },
@@ -450,11 +519,17 @@
     "symfony/options-resolver": {
         "version": "v6.0.0"
     },
+    "symfony/password-hasher": {
+        "version": "v6.1.0"
+    },
     "symfony/polyfill-intl-grapheme": {
         "version": "v1.23.1"
     },
     "symfony/polyfill-intl-normalizer": {
         "version": "v1.23.0"
+    },
+    "symfony/polyfill-uuid": {
+        "version": "v1.26.0"
     },
     "symfony/process": {
         "version": "v6.0.0"
@@ -464,6 +539,9 @@
     },
     "symfony/property-info": {
         "version": "v6.0.0"
+    },
+    "symfony/psr-http-message-bridge": {
+        "version": "v2.1.2"
     },
     "symfony/routing": {
         "version": "6.1",
@@ -480,6 +558,9 @@
     },
     "symfony/runtime": {
         "version": "v6.0.0"
+    },
+    "symfony/security-core": {
+        "version": "v6.1.0"
     },
     "symfony/serializer": {
         "version": "v6.0.1"
