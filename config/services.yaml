@@ -32,3 +32,5 @@ services:
             $kind: !php/const PhpParser\ParserFactory::PREFER_PHP7
 
     PhpParser\ParserFactory: ~
+
+    Symfony\Component\Dotenv\Command\DotenvDumpCommand: ~

@@ -19,7 +19,9 @@ task('build', function () {
     cd('{{release_path}}');
     run('npm clean-install');
     run('npm run build');
+    run('{{bin/console}} dotenv:dump {{console_options}}');
 });
 
 after('deploy:cache:clear', 'build');
+after('deploy:cache:clear', 'database:migrate');
 after('deploy:failed', 'deploy:unlock');
