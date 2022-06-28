@@ -2,7 +2,8 @@
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
         "@symfony/webpack-encore": "^2.0.0",
-        "autoprefixer": "^9.7.6",
+        "autoprefixer": "^10.4.7",
+        "browserslist": "^4.21.1",
         "codemirror": "^5.64.4",
         "core-js": "^3.0.0",
         "jquery": "3.6.0",

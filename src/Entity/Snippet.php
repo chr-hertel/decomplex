@@ -15,23 +15,16 @@ class Snippet implements \JsonSerializable
     #[ORM\Id, ORM\Column(type: 'integer'), ORM\GeneratedValue]
     private int $id;
 
-    #[ORM\Column(unique: true)]
-    private string $hash;
-
     public function __construct(
         #[ORM\Column(type: 'text')]
         private readonly string $code,
+        #[ORM\Column(unique: true)]
+        private readonly string $hash,
         #[ORM\Column(type: 'integer')]
         private readonly int $cyclomaticComplexity,
         #[ORM\Column(type: 'integer')]
         private readonly int $cognitiveComplexity,
     ) {
-        $this->hash = static::hash($code);
-    }
-
-    public static function hash(string $code): string
-    {
-        return md5($code);
     }
 
     public function getHash(): string
@@ -69,11 +62,6 @@ class Snippet implements \JsonSerializable
     public function getCognitiveComplexityLevel(): string
     {
         return $this->determineComplexityLevel($this->getCognitiveComplexity());
-    }
-
-    public function equalTo(Snippet $rightSnippet): bool
-    {
-        return $this->hash === $rightSnippet->hash;
     }
 
     /**

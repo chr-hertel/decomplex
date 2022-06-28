@@ -8,15 +8,15 @@ use App\Entity\Diff;
 use App\Entity\Snippet;
 use PHPUnit\Framework\TestCase;
 
-class DiffTest extends TestCase
+final class DiffTest extends TestCase
 {
     private Diff $diff;
 
     protected function setUp(): void
     {
         $this->diff = new Diff(
-            new Snippet('<?php echo "Hello World";', 1, 1),
-            new Snippet('<?php echo "Hallo Welt!";', 1, 1),
+            new Snippet('<?php echo "Hello World";', 'abcdef', 1, 1),
+            new Snippet('<?php echo "Hallo Welt!";', 'ghijkl', 1, 1),
         );
     }
 

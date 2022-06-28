@@ -10,30 +10,26 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use LogicException;
 
-final class Persister
+final class CodeDiffer
 {
     public function __construct(
-        private readonly Calculator $calculator,
+        private readonly ComplexityCalculator $calculator,
         private readonly EntityManagerInterface $entityManager,
         private readonly DiffRepository $diffRepository,
     ) {
     }
 
-    public function persistDiff(string $leftCode, string $rightCode): Diff
+    public function create(string $leftCode, string $rightCode): Diff
     {
-        $leftSnippet = $this->calculator->calculateComplexities($leftCode);
-        $rightSnippet = $this->calculator->calculateComplexities($rightCode);
-
-        if ($leftSnippet->equalTo($rightSnippet)) {
-            $rightSnippet = $leftSnippet;
-        }
+        $leftSnippet = $this->calculator->analyze($leftCode);
+        $rightSnippet = $leftCode === $rightCode ? $leftSnippet : $this->calculator->analyze($rightCode);
 
         $diff = new Diff($leftSnippet, $rightSnippet);
 
         $this->entityManager->persist($diff);
         try {
             $this->entityManager->flush();
-        } catch (UniqueConstraintViolationException $exception) {
+        } catch (UniqueConstraintViolationException) {
             $diff = $this->diffRepository->findOneBySnippets($leftSnippet, $rightSnippet);
 
             if (null === $diff) {

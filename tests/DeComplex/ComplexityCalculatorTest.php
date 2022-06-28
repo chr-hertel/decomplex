@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\ComplexityDiff;
+namespace App\Tests\DeComplex;
 
-use App\DeComplex\Calculator;
+use App\DeComplex\CodeHasher;
+use App\DeComplex\ComplexityCalculator;
 use App\Entity\Snippet;
 use App\Repository\SnippetRepository;
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;
@@ -13,17 +14,23 @@ use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
 use Spatie\Snapshots\MatchesSnapshots;
 
-class CalculatorTest extends TestCase
+final class ComplexityCalculatorTest extends TestCase
 {
     use MatchesSnapshots;
 
-    private Calculator $calculator;
+    private ComplexityCalculator $calculator;
+    private CodeHasher $codeHasher;
 
     protected function setUp(): void
     {
-        $repository = $this->createMock(SnippetRepository::class);
-        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
-        $this->calculator = new Calculator($repository, $parser, new CyclomaticComplexity(), new CognitiveComplexity());
+        $this->codeHasher = new CodeHasher();
+        $this->calculator = new ComplexityCalculator(
+            $this->codeHasher,
+            $this->createMock(SnippetRepository::class),
+            (new ParserFactory())->create(ParserFactory::PREFER_PHP7),
+            new CyclomaticComplexity(),
+            new CognitiveComplexity(),
+        );
     }
 
     /**
@@ -32,8 +39,8 @@ class CalculatorTest extends TestCase
     public function testComplexityCalculation(string $sourceFile, int $cyclomaticComplexity, int $cognitiveComplexity): void
     {
         $code = (string) file_get_contents($sourceFile);
-        $expectedCalculation = new Snippet($code, $cyclomaticComplexity, $cognitiveComplexity);
-        $actualCalculation = $this->calculator->calculateComplexities($code);
+        $expectedCalculation = new Snippet($code, $this->codeHasher->hash($code), $cyclomaticComplexity, $cognitiveComplexity);
+        $actualCalculation = $this->calculator->analyze($code);
 
         static::assertEquals($expectedCalculation, $actualCalculation);
     }
@@ -53,6 +60,6 @@ class CalculatorTest extends TestCase
     {
         $this->expectException(\LogicException::class);
 
-        $this->calculator->calculateComplexities('<?php $;null->$null');
+        $this->calculator->analyze('<?php $;null->$null');
     }
 }

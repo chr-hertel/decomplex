@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\ComplexityDiff;
+namespace App\Tests\DeComplex;
 
-use App\DeComplex\Calculator;
-use App\DeComplex\Persister;
+use App\DeComplex\CodeDiffer;
+use App\DeComplex\CodeHasher;
+use App\DeComplex\ComplexityCalculator;
 use App\Entity\Diff;
 use App\Repository\DiffRepository;
 use App\Repository\SnippetRepository;
@@ -15,13 +16,17 @@ use NdB\PhpDocCheck\Metrics\CyclomaticComplexity;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
 
-class PersisterTest extends TestCase
+final class CodeDifferTest extends TestCase
 {
     public function testDiffPersisting(): void
     {
-        $repository = $this->createMock(SnippetRepository::class);
-        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
-        $calculator = new Calculator($repository, $parser, new CyclomaticComplexity(), new CognitiveComplexity());
+        $calculator = new ComplexityCalculator(
+            new CodeHasher(),
+            $this->createMock(SnippetRepository::class),
+            (new ParserFactory())->create(ParserFactory::PREFER_PHP7),
+            new CyclomaticComplexity(),
+            new CognitiveComplexity(),
+        );
 
         $entityManager = $this->createMock(EntityManagerInterface::class);
         $entityManager
@@ -34,7 +39,7 @@ class PersisterTest extends TestCase
 
         $diffRepository = $this->createMock(DiffRepository::class);
 
-        $persister = new Persister($calculator, $entityManager, $diffRepository);
-        $persister->persistDiff('<?php echo "Hello World";', '<?php echo "hallo welt";');
+        $persister = new CodeDiffer($calculator, $entityManager, $diffRepository);
+        $persister->create('<?php echo "Hello World";', '<?php echo "hallo welt";');
     }
 }

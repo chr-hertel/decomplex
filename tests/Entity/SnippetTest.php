@@ -13,12 +13,17 @@ class SnippetTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->snippet = new Snippet('<?php echo "Foo bar";', 5, 3);
+        $this->snippet = new Snippet('<?php echo "Foo bar";', 'abcdef', 5, 3);
     }
 
     public function testCodeGetter(): void
     {
         static::assertSame('<?php echo "Foo bar";', $this->snippet->getCode());
+    }
+
+    public function testHashGetter(): void
+    {
+        static::assertSame('abcdef', $this->snippet->getHash());
     }
 
     public function testComplexityGetter(): void
@@ -46,20 +51,6 @@ class SnippetTest extends TestCase
         static::assertSame('low', $this->snippet->getCognitiveComplexityLevel());
     }
 
-    public function testEqualToSnippet(): void
-    {
-        $snippet = new Snippet('<?php echo "Foo bar";', 5, 3);
-
-        static::assertTrue($this->snippet->equalTo($snippet));
-    }
-
-    public function testUnequalToSnippet(): void
-    {
-        $snippet = new Snippet('<?php echo "Foo Bar";', 5, 3);
-
-        static::assertFalse($this->snippet->equalTo($snippet));
-    }
-
     /**
      * @dataProvider provideSampleComplexities
      */
@@ -70,7 +61,7 @@ class SnippetTest extends TestCase
         string $cognitiveLevel,
         string $complexityLevel
     ): void {
-        $snippet = new Snippet('code', $cyclomaticComplexity, $cognitiveComplexity);
+        $snippet = new Snippet('code', '091234', $cyclomaticComplexity, $cognitiveComplexity);
 
         $expected = [
             'cyclomatic_complexity' => [
