@@ -19,6 +19,14 @@ class ComplexityDiffControllerTest extends WebTestCase
         static::assertResponseIsSuccessful();
     }
 
+    public function testIndexOnlyGet(): void
+    {
+        $client = static::createClient();
+        $client->request('POST', '/');
+
+        static::assertResponseStatusCodeSame(405);
+    }
+
     public function testInvalidCodeSnippet(): void
     {
         $client = static::createClient();

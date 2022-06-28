@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\DeComplex\Calculator;
-use App\DeComplex\Persister;
+use App\DeComplex\CodeDiffer;
+use App\DeComplex\ComplexityCalculator;
 use App\Entity\Diff;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -28,13 +28,13 @@ final class DeComplexController extends AbstractController
     }
 
     #[Route('calculate', name: 'calculate', methods: ['POST'], defaults: ['_format' => 'json'])]
-    public function calculate(Request $request, Calculator $calculator): JsonResponse
+    public function calculate(Request $request, ComplexityCalculator $calculator): JsonResponse
     {
         /** @var string $code */
         $code = $request->getContent();
 
         try {
-            $snippet = $calculator->calculateComplexities($code);
+            $snippet = $calculator->analyze($code);
         } catch (\LogicException $exception) {
             throw new BadRequestHttpException($exception->getMessage(), $exception);
         }
@@ -43,12 +43,12 @@ final class DeComplexController extends AbstractController
     }
 
     #[Route('permalink', name: 'create_permalink', methods: ['POST'], defaults: ['_format' => 'json'])]
-    public function permalink(Request $request, Persister $persister): JsonResponse
+    public function permalink(Request $request, CodeDiffer $differ): JsonResponse
     {
         $leftCode = (string) $request->request->get('left', '');
         $rightCode = (string) $request->request->get('right', '');
 
-        $diff = $persister->persistDiff($leftCode, $rightCode);
+        $diff = $differ->create($leftCode, $rightCode);
 
         return new JsonResponse(
             $this->generateUrl('decomplex_permalink', ['id' => $diff->getId()], UrlGeneratorInterface::ABSOLUTE_URL)

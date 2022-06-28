@@ -13,9 +13,10 @@ use PhpParser\ErrorHandler\Collecting;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
 
-final class Calculator
+final class ComplexityCalculator
 {
     public function __construct(
+        private readonly CodeHasher $codeHasher,
         private readonly SnippetRepository $snippetRepository,
         private readonly Parser $parser,
         private readonly CyclomaticComplexity $cyclomaticComplexity,
@@ -23,9 +24,10 @@ final class Calculator
     ) {
     }
 
-    public function calculateComplexities(string $code): Snippet
+    public function analyze(string $code): Snippet
     {
-        $snippet = $this->snippetRepository->findOneByHash(Snippet::hash($code));
+        $hash = $this->codeHasher->hash($code);
+        $snippet = $this->snippetRepository->findOneByHash($hash);
 
         if (null !== $snippet) {
             return $snippet;
@@ -40,6 +42,7 @@ final class Calculator
 
         return new Snippet(
             $code,
+            $hash,
             $this->calculateCyclomaticComplexity($ast),
             $this->calculateCognitiveComplexity($ast)
         );
