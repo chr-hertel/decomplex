@@ -42,6 +42,14 @@ header {
 .editor-container {
     @apply p-10 bg-gray-100 border-b border-gray-300;
 
+    .missing-diff {
+        @apply bg-red-100 mt-0 mb-8 p-6 font-bold text-xl border border-red-200 rounded-l text-red-800;
+
+        i {
+            @apply pr-3;
+        }
+    }
+
     .share {
         @apply px-5 mx-auto mt-10;
 

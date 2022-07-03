@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>deComplex.me - diff and reduce the complexity of your PHP code</title>
+        <meta property="og:image" content="{{ asset('screenshot.png') }}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+        {{ encore_entry_link_tags('app') }}
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                {% block navigation %}
+                    <div>
+                        <img src="{{ asset('decomplex.png') }}" alt="deComplex.me Logo">
+                        <span>diff and reduce the complexity of your PHP code</span>
+                    </div>
+                {% endblock %}
+            </div>
+        </header>
+        {% block content %}{% endblock %}
+        <footer class="container">
+            <p>
+                Powered by
+                <a href="https://github.com/NielsdeBlaauw/php-doc-check/" target="_blank">PHP Doc Check</a>,
+                <a href="https://codemirror.net/" target="_blank">CodeMirror</a>,
+                <a href="https://symfony.com/" target="_blank">Symfony</a> with <a href="https://twig.symfony.com/" target="_blank">Twig</a>,
+                <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>,
+                <a href="https://sass-lang.com/" target="_blank">Sass</a>,
+                <a href="https://jquery.com/" target="_blank">jQuery</a>,
+                <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>,
+                <a href="https://webpack.js.org/" target="_blank">Webpack</a> with <a href="https://github.com/symfony/webpack-encore" target="_blank">Encore</a>,
+                <a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a> and many more.<br />
+                Check out the sources at <a class="underline" href="https://github.com/chr-hertel/decomplex" target="_blank">Github</a>.
+            </p>
+            Made with ♥ in Berlin by <a class="underline" href="//twitter.com/el_stoffel" target="_blank">@el_stoffel</a>
+        </footer>
+        {{ encore_entry_script_tags('app') }}
+    </body>
+</html>
