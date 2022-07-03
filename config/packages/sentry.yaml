@@ -1,2 +1,12 @@
 sentry:
     dsn: '%env(SENTRY_DSN)%'
+    options:
+        integrations:
+            - 'Sentry\Integration\IgnoreErrorsIntegration'
+
+services:
+    Sentry\Integration\IgnoreErrorsIntegration:
+        $options:
+            ignore_exceptions:
+                - 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'            # 404
+                - 'Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException'    # 405
