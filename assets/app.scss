@@ -18,13 +18,16 @@ header {
         @apply mx-auto px-5 py-3 flex justify-between;
     }
 
-    h1 {
-        @apply text-2xl inline mr-3 font-bold;
-        font-family: 'Space Mono', monospace;
+    img {
+        @apply inline mr-3;
+        height: 36px;
+        width: 200px;
     }
 
     span {
         @apply text-gray-700 text-sm;
+        vertical-align: bottom;
+        line-height: 27px;
     }
 
     a {

@@ -8,5 +8,6 @@ services:
     Sentry\Integration\IgnoreErrorsIntegration:
         $options:
             ignore_exceptions:
+                - 'Symfony\Component\HttpKernel\Exception\BadRequestHttpException'          # 400
                 - 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'            # 404
                 - 'Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException'    # 405
