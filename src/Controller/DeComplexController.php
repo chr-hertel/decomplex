@@ -20,10 +20,11 @@ final class DeComplexController extends AbstractController
 {
     #[Route('', name: 'index', methods: ['GET'])]
     #[Route('/{id<[0-9a-zA-Z\-\_]{6}>}', name: 'permalink', methods: ['GET'])]
-    public function index(Diff $diff = null): Response
+    public function index(Diff $diff = null, string $id = null): Response
     {
         return $this->render('index.html.twig', [
             'diff' => $diff,
+            'missing_diff' => null === $diff && null !== $id,
         ]);
     }
 
