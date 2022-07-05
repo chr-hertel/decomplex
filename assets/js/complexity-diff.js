@@ -31,12 +31,13 @@ $.extend(ComplexityDiff.prototype, {
                 $('.js-permalink-input').val(data);
             })
             .catch(function (jqXHR) {
-                console.error(jqXHR);
+                $('.js-permalink-input').val(
+                    "You can't create a permalink from broken code."
+                );
             });
     },
     handlePermalinkCopy: function () {
         let $input = $('.js-permalink-input');
-        $input.select();
-        document.execCommand('copy');
+        navigator.clipboard.writeText($input.val());
     },
 });

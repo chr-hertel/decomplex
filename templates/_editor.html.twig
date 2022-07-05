@@ -7,6 +7,11 @@
     <i title="Copy Editor Content" class="js-copy-editor copy-editor fa fa-copy"></i>
     <h2>Editor #{{ number }}</h2>
     <textarea class="editor">{{ snippet.code|default(default_code) }}</textarea>
+    <div class="code-comment">Press the <i class="fas fa-sync-alt"></i> button to calculate complexities!</div>
+    <div class="code-error">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>Looks like your code has a syntax error!</span>
+    </div>
     <div class="metrics">
         <div class="complexity-badge">
             <div class="js-cyclomatic-complexity metric complexity-level-{{ snippet.cyclomaticComplexityLevel|default(default_level) }}"
@@ -17,7 +22,7 @@
                 <span>Cyclomatic</span><br />Complexity
             </div>
         </div>
-        <button title="Recalculate Complexities" class="js-recalculate-complexities">
+        <button title="Calculate Complexities" class="js-recalculate-complexities">
             <i class="fas fa-sync-alt"></i>
         </button>
         <div class="complexity-badge">
