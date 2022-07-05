@@ -31,7 +31,9 @@ $.extend(ComplexityDiff.prototype, {
                 $('.js-permalink-input').val(data);
             })
             .catch(function (jqXHR) {
-                $('.js-permalink-input').val('You can\'t create a permalink from broken code.')
+                $('.js-permalink-input').val(
+                    "You can't create a permalink from broken code."
+                );
             });
     },
     handlePermalinkCopy: function () {

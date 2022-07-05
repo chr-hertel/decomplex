@@ -25,11 +25,7 @@ export let Editor = function ($wrapper) {
         gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
     });
 
-    $wrapper.on(
-        'click',
-        '.js-copy-editor',
-        this.copyEditorText.bind(this)
-    );
+    $wrapper.on('click', '.js-copy-editor', this.copyEditorText.bind(this));
     $wrapper.on(
         'click',
         '.js-recalculate-complexities',
@@ -79,11 +75,20 @@ $.extend(Editor.prototype, {
                 self.$wrapper.removeClass('calculating');
             });
     },
-    waitingForCalculation: function() {
+    waitingForCalculation: function () {
         this.$wrapper.addClass('calculating');
-        let waiting = { value: '?', level: this.$wrapper.data('complexity-level') };
-        this.replaceComplexity(this.$wrapper.find('.js-cyclomatic-complexity'), waiting);
-        this.replaceComplexity(this.$wrapper.find('.js-cognitive-complexity'), waiting);
+        let waiting = {
+            value: '?',
+            level: this.$wrapper.data('complexity-level'),
+        };
+        this.replaceComplexity(
+            this.$wrapper.find('.js-cyclomatic-complexity'),
+            waiting
+        );
+        this.replaceComplexity(
+            this.$wrapper.find('.js-cognitive-complexity'),
+            waiting
+        );
     },
     replaceComplexity: function ($wrapper, data) {
         this.setLevel($wrapper, data.level);
@@ -101,7 +106,7 @@ $.extend(Editor.prototype, {
         if (undefined === errors || 0 === errors.length) {
             $error.text('Looks like your code has a syntax error!');
         } else {
-            $error.text(errors[0].message + ' (Line ' +errors[0].line + ')');
+            $error.text(errors[0].message + ' (Line ' + errors[0].line + ')');
         }
     },
 });

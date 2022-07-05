@@ -122,7 +122,8 @@ header {
         height: auto;
     }
 
-    .code-comment, .code-error {
+    .code-comment,
+    .code-error {
         @apply px-2 py-1 text-center text-xs rounded-bl rounded-br;
     }
     .code-comment {
