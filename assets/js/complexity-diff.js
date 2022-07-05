@@ -37,6 +37,10 @@ $.extend(ComplexityDiff.prototype, {
     handlePermalinkCopy: function () {
         let $input = $('.js-permalink-input');
         $input.select();
-        document.execCommand('copy');
+        if (!navigator.clipboard){
+            document.execCommand('copy');
+        } else{
+            navigator.clipboard.writeText($input.val());
+        }
     },
 });

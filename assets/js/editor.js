@@ -37,6 +37,7 @@ $.extend(Editor.prototype, {
         return this.editor.getValue();
     },
     handleRecalculate: function () {
+        this.waitingForCalculation();
         var self = this;
         $.ajax({
             method: 'POST',
@@ -53,9 +54,11 @@ $.extend(Editor.prototype, {
                     self.$wrapper.find('.js-cognitive-complexity'),
                     data.cognitive_complexity
                 );
+                self.$wrapper.removeClass('calculating');
             })
             .catch(function (jqXHR) {
-                let error = { value: 'X', level: 'very-high' };
+                let error = { value: 'X', level: 'error' };
+                self.setError(jqXHR.responseJSON);
                 self.setLevel(self.$wrapper, error.level);
                 self.replaceComplexity(
                     self.$wrapper.find('.js-cyclomatic-complexity'),
@@ -65,7 +68,14 @@ $.extend(Editor.prototype, {
                     self.$wrapper.find('.js-cognitive-complexity'),
                     error
                 );
+                self.$wrapper.removeClass('calculating');
             });
+    },
+    waitingForCalculation: function() {
+        this.$wrapper.addClass('calculating');
+        let waiting = { value: '?', level: this.$wrapper.data('complexity-level') };
+        this.replaceComplexity(this.$wrapper.find('.js-cyclomatic-complexity'), waiting);
+        this.replaceComplexity(this.$wrapper.find('.js-cognitive-complexity'), waiting);
     },
     replaceComplexity: function ($wrapper, data) {
         this.setLevel($wrapper, data.level);
@@ -77,5 +87,13 @@ $.extend(Editor.prototype, {
             .removeClass('complexity-level-' + oldLevel)
             .addClass('complexity-level-' + level)
             .data('complexity-level', level);
+    },
+    setError: function (errors) {
+        let $error = this.$wrapper.find('.code-error span');
+        if (undefined === errors || 0 === errors.length) {
+            $error.text('Looks like your code has a syntax error!');
+        } else {
+            $error.text(errors[0].message + ' (L:' +errors[0].line + ')');
+        }
     },
 });

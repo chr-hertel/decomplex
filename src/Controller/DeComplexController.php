@@ -6,6 +6,8 @@ namespace App\Controller;
 
 use App\DeComplex\CodeDiffer;
 use App\DeComplex\ComplexityCalculator;
+use App\DeComplex\Exception\CalculationException;
+use App\DeComplex\Exception\ParserException;
 use App\Entity\Diff;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -36,8 +38,10 @@ final class DeComplexController extends AbstractController
 
         try {
             $snippet = $calculator->analyze($code);
-        } catch (\LogicException $exception) {
+        } catch (ParserException $exception) {
             throw new BadRequestHttpException($exception->getMessage(), $exception);
+        } catch (CalculationException $exception) {
+            return new JsonResponse($exception, 400);
         }
 
         return new JsonResponse($snippet);

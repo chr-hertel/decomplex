@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\DeComplex;
 
+use App\DeComplex\Exception\CalculationException;
+use App\DeComplex\Exception\ParserException;
 use App\Entity\Snippet;
 use App\Repository\SnippetRepository;
-use LogicException;
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;
 use NdB\PhpDocCheck\Metrics\CyclomaticComplexity;
 use PhpParser\ErrorHandler\Collecting;
@@ -36,8 +37,12 @@ final class ComplexityCalculator
         $errorCollection = new Collecting();
         $ast = $this->parser->parse($code, $errorCollection);
 
-        if (null === $ast || $errorCollection->hasErrors()) {
-            throw new LogicException('Unable to parse given source code');
+        if (null === $ast) {
+            throw new ParserException();
+        }
+
+        if ($errorCollection->hasErrors()) {
+            throw new CalculationException($errorCollection);
         }
 
         return new Snippet(
