@@ -1,7 +1,10 @@
-Complexity Diff
-===============
+deComplex
+=========
 
-Slim web interface to diff complexity of code snippets
+Slim web interface to diff complexity of two code snippets hosted on [decomplex.me](https://decomplex.me).
+
+![Screenshot](/public/screenshot.png)
+
 
 Setup
 -----
