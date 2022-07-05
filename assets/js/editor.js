@@ -101,7 +101,7 @@ $.extend(Editor.prototype, {
         if (undefined === errors || 0 === errors.length) {
             $error.text('Looks like your code has a syntax error!');
         } else {
-            $error.text(errors[0].message + ' (L:' +errors[0].line + ')');
+            $error.text(errors[0].message + ' (Line ' +errors[0].line + ')');
         }
     },
 });
