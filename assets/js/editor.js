@@ -27,6 +27,11 @@ export let Editor = function ($wrapper) {
 
     $wrapper.on(
         'click',
+        '.js-copy-editor',
+        this.copyEditorText.bind(this)
+    );
+    $wrapper.on(
+        'click',
         '.js-recalculate-complexities',
         this.handleRecalculate.bind(this)
     );
@@ -35,6 +40,9 @@ export let Editor = function ($wrapper) {
 $.extend(Editor.prototype, {
     getCode: function () {
         return this.editor.getValue();
+    },
+    copyEditorText: function () {
+        navigator.clipboard.writeText(this.getCode());
     },
     handleRecalculate: function () {
         this.waitingForCalculation();
