@@ -30,7 +30,7 @@ header {
         line-height: 27px;
     }
 
-    a {
+    a.editor-reset {
         @apply text-gray-100 text-lg font-bold bg-gray-400 rounded px-2 py-1;
 
         &:hover {
