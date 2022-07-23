@@ -77,22 +77,22 @@ $.extend(Editor.prototype, {
     },
     waitingForCalculation: function () {
         this.$wrapper.addClass('calculating');
-        let waiting = {
+
+        let $cyclo = this.$wrapper.find('.js-cyclomatic-complexity');
+        this.replaceComplexity($cyclo, {
             value: '?',
-            level: this.$wrapper.data('complexity-level'),
-        };
-        this.replaceComplexity(
-            this.$wrapper.find('.js-cyclomatic-complexity'),
-            waiting
-        );
-        this.replaceComplexity(
-            this.$wrapper.find('.js-cognitive-complexity'),
-            waiting
-        );
+            level: $cyclo.data('complexity-level'),
+        });
+
+        let $cogni = this.$wrapper.find('.js-cognitive-complexity');
+        this.replaceComplexity($cogni, {
+            value: '?',
+            level: $cogni.data('complexity-level'),
+        });
     },
     replaceComplexity: function ($wrapper, data) {
         this.setLevel($wrapper, data.level);
-        $wrapper.html(data.value);
+        $wrapper.find('span').html(data.value);
     },
     setLevel: function ($wrapper, level) {
         let oldLevel = $wrapper.data('complexity-level');
