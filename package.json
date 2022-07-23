@@ -7,11 +7,11 @@
         "codemirror": "^5.64.4",
         "core-js": "^3.0.0",
         "jquery": "3.6.0",
-        "node-sass": "^7.0.1",
         "postcss": "^8.4.14",
         "postcss-loader": "^6.2.1",
         "prettier": "^2.6.2",
         "regenerator-runtime": "^0.13.2",
+        "sass": "^1.54.0",
         "sass-loader": "^12.6.0",
         "tailwindcss": "^2.2.19",
         "webpack-notifier": "^1.15.0"
