@@ -13,7 +13,7 @@ class SnippetTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->snippet = new Snippet('<?php echo "Foo bar";', 'abcdef', 5, 3);
+        $this->snippet = new Snippet('<?php echo "Foo bar";', 'abcdef', 4, 3);
     }
 
     public function testCodeGetter(): void
@@ -33,7 +33,7 @@ class SnippetTest extends TestCase
 
     public function testCyclomaticComplexityGetter(): void
     {
-        static::assertSame(5, $this->snippet->getCyclomaticComplexity());
+        static::assertSame(4, $this->snippet->getCyclomaticComplexity());
     }
 
     public function testCyclomaticComplexityLevelGetter(): void
@@ -84,11 +84,13 @@ class SnippetTest extends TestCase
     {
         return [
             [1, 'low', 2, 'low', 'low'],
-            [4, 'low', 6, 'moderate', 'moderate'],
+            [3, 'low', 4, 'moderate', 'low'],
+            [4, 'moderate', 6, 'moderate', 'moderate'],
             [2, 'low', 8, 'high', 'moderate'],
-            [8, 'high', 10, 'high', 'high'],
-            [6, 'moderate', 4, 'low', 'moderate'],
+            [8, 'high', 10, 'very-high', 'high'],
+            [6, 'moderate', 4, 'moderate', 'moderate'],
             [21, 'very-high', 16, 'very-high', 'very-high'],
+            [100, 'overkill', 99, 'very-high', 'very-high'],
             [153, 'overkill', 75, 'very-high', 'overkill'],
         ];
     }

@@ -65,7 +65,11 @@ class Snippet implements \JsonSerializable
     }
 
     /**
-     * @return array<string, string|array<string, int|string>>
+     * @return array{
+     *     cyclomatic_complexity: array{value: integer, level: string},
+     *     cognitive_complexity: array{value: integer, level: string},
+     *     complexity_level: string
+     * }
      */
     public function jsonSerialize(): array
     {
@@ -84,22 +88,12 @@ class Snippet implements \JsonSerializable
 
     private function determineComplexityLevel(float $value): string
     {
-        if ($value <= 4) {
-            return 'low';
-        }
-
-        if ($value <= 7) {
-            return 'moderate';
-        }
-
-        if ($value <= 10) {
-            return 'high';
-        }
-
-        if ($value <= 100) {
-            return 'very-high';
-        }
-
-        return 'overkill';
+        return match (true) {
+            $value < 4 => 'low',
+            $value < 7 => 'moderate',
+            $value < 10 => 'high',
+            $value < 100 => 'very-high',
+            default => 'overkill',
+        };
     }
 }

@@ -1,11 +1,11 @@
 {
     "cyclomatic_complexity": {
         "value": 4,
-        "level": "low"
+        "level": "moderate"
     },
     "cognitive_complexity": {
         "value": 4,
-        "level": "low"
+        "level": "moderate"
     },
-    "complexity_level": "low"
+    "complexity_level": "moderate"
 }
