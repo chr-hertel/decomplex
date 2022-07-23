@@ -16,7 +16,7 @@
         <div class="complexity-badge">
             <div class="js-cyclomatic-complexity metric complexity-level-{{ snippet.cyclomaticComplexityLevel|default(default_level) }}"
                  data-complexity-level="{{ snippet.cyclomaticComplexityLevel|default(default_level) }}">
-                {{ snippet.cyclomaticComplexity|default(default_complexity) }}
+                <span>{{ snippet.cyclomaticComplexity|default(default_complexity) }}</span>
             </div>
             <div class="label">
                 <span>Cyclomatic</span><br />Complexity
@@ -28,7 +28,7 @@
         <div class="complexity-badge">
             <div class="js-cognitive-complexity metric complexity-level-{{ snippet.cognitiveComplexityLevel|default(default_level) }}"
                  data-complexity-level="{{ snippet.cognitiveComplexityLevel|default(default_level) }}">
-                {{ snippet.cognitiveComplexity|default(default_complexity) }}
+                <span>{{ snippet.cognitiveComplexity|default(default_complexity) }}</span>
             </div>
             <div class="label">
                 <span>Cognitive</span><br />Complexity

@@ -89,6 +89,7 @@ class SnippetTest extends TestCase
             [8, 'high', 10, 'high', 'high'],
             [6, 'moderate', 4, 'low', 'moderate'],
             [21, 'very-high', 16, 'very-high', 'very-high'],
+            [153, 'overkill', 75, 'very-high', 'overkill'],
         ];
     }
 }

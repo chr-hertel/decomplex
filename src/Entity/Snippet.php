@@ -96,6 +96,10 @@ class Snippet implements \JsonSerializable
             return 'high';
         }
 
-        return 'very-high';
+        if ($value <= 100) {
+            return 'very-high';
+        }
+
+        return 'overkill';
     }
 }
