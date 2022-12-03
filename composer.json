@@ -15,21 +15,21 @@
         "pugx/shortid-php": "^1.0",
         "sensio/framework-extra-bundle": "^6.2",
         "sentry/sentry-symfony": "^4.3",
-        "symfony/asset": "^6.1",
-        "symfony/console": "^6.1",
-        "symfony/dotenv": "^6.1",
+        "symfony/asset": "^6.2",
+        "symfony/console": "^6.2",
+        "symfony/dotenv": "^6.2",
         "symfony/flex": "^2.1",
-        "symfony/framework-bundle": "^6.1",
+        "symfony/framework-bundle": "^6.2",
         "symfony/monolog-bundle": "^3.8",
-        "symfony/runtime": "^6.1",
-        "symfony/twig-bundle": "^6.1",
+        "symfony/runtime": "^6.2",
+        "symfony/twig-bundle": "^6.2",
         "symfony/webpack-encore-bundle": "^1.14",
-        "symfony/yaml": "^6.1",
+        "symfony/yaml": "^6.2",
         "twig/extra-bundle": "^3.4",
         "twig/twig": "^3.4"
     },
     "require-dev": {
-        "deployer/deployer": "^7.0@RC",
+        "deployer/deployer": "^7.0",
         "friendsofphp/php-cs-fixer": "^3.4",
         "infection/infection": "^0.26",
         "pdepend/pdepend": "2.x-dev",
@@ -39,12 +39,12 @@
         "phpstan/phpstan-symfony": "^1.1",
         "phpunit/phpunit": "^9.5",
         "spatie/phpunit-snapshot-assertions": "^4.2",
-        "symfony/browser-kit": "^6.1",
-        "symfony/css-selector": "^6.1",
-        "symfony/debug-bundle": "^6.1",
-        "symfony/stopwatch": "^6.1",
-        "symfony/var-dumper": "^6.1",
-        "symfony/web-profiler-bundle": "^6.1",
+        "symfony/browser-kit": "^6.2",
+        "symfony/css-selector": "^6.2",
+        "symfony/debug-bundle": "^6.2",
+        "symfony/stopwatch": "^6.2",
+        "symfony/var-dumper": "^6.2",
+        "symfony/web-profiler-bundle": "^6.2",
         "vimeo/psalm": "^4.23.0"
     },
     "config": {
@@ -103,7 +103,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.1.*",
+            "require": "6.2.*",
             "docker": false
         }
     }
