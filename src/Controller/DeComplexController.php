@@ -33,7 +33,6 @@ final class DeComplexController extends AbstractController
     #[Route('calculate', name: 'calculate', methods: ['POST'], defaults: ['_format' => 'json'])]
     public function calculate(Request $request, ComplexityCalculator $calculator): JsonResponse
     {
-        /** @var string $code */
         $code = $request->getContent();
 
         try {
