@@ -8,7 +8,7 @@ jobs:
       postgres:
         image: postgres:11
         env:
-          POSTGRES_DB: 'symfony'
+          POSTGRES_DB: 'symfony_test'
           POSTGRES_USER: 'postgres'
           POSTGRES_PASSWORD: 'password'
         # Set health checks to wait until postgres has started
@@ -76,10 +76,7 @@ jobs:
         run: vendor/bin/psalm --show-info=true
 
       - name: Setup Database
-        run: |
-          echo 'DATABASE_URL="postgresql://postgres:password@localhost:8432/symfony?serverVersion=11.0"' > .env.test.local
-          bin/console doctrine:database:create --env=test --no-interaction
-          bin/console doctrine:schema:create --env=test --no-interaction
+        run: bin/console doctrine:migration:migrate --env=test --no-interaction
 
       - name: Frontend Build
         run: npm run build
