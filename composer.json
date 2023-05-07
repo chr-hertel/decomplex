@@ -3,8 +3,9 @@
     "description": "Slim web interface to diff complexity of code snippets",
     "type": "project",
     "license": "MIT",
+    "minimum-stability": "beta",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
@@ -13,18 +14,17 @@
         "doctrine/orm": "^2.12",
         "niels-de-blaauw/php-doc-check": "^0.2",
         "pugx/shortid-php": "^1.0",
-        "sensio/framework-extra-bundle": "^6.2",
         "sentry/sentry-symfony": "^4.3",
-        "symfony/asset": "^6.2",
-        "symfony/console": "^6.2",
-        "symfony/dotenv": "^6.2",
+        "symfony/asset": "^6.3",
+        "symfony/console": "^6.3",
+        "symfony/dotenv": "^6.3",
         "symfony/flex": "^2.1",
-        "symfony/framework-bundle": "^6.2",
+        "symfony/framework-bundle": "^6.3",
         "symfony/monolog-bundle": "^3.8",
-        "symfony/runtime": "^6.2",
-        "symfony/twig-bundle": "^6.2",
+        "symfony/runtime": "^6.3",
+        "symfony/twig-bundle": "^6.3",
         "symfony/webpack-encore-bundle": "^1.14",
-        "symfony/yaml": "^6.2",
+        "symfony/yaml": "^6.3",
         "twig/extra-bundle": "^3.4",
         "twig/twig": "^3.4"
     },
@@ -39,17 +39,17 @@
         "phpstan/phpstan-symfony": "^1.1",
         "phpunit/phpunit": "^9.5",
         "spatie/phpunit-snapshot-assertions": "^4.2",
-        "symfony/browser-kit": "^6.2",
-        "symfony/css-selector": "^6.2",
-        "symfony/debug-bundle": "^6.2",
-        "symfony/stopwatch": "^6.2",
-        "symfony/var-dumper": "^6.2",
-        "symfony/web-profiler-bundle": "^6.2",
+        "symfony/browser-kit": "^6.3",
+        "symfony/css-selector": "^6.3",
+        "symfony/debug-bundle": "^6.3",
+        "symfony/stopwatch": "^6.3",
+        "symfony/var-dumper": "^6.3",
+        "symfony/web-profiler-bundle": "^6.3",
         "vimeo/psalm": "^4.23.0"
     },
     "config": {
         "platform": {
-            "php": "8.1.6"
+            "php": "8.2.5"
         },
         "preferred-install": {
             "*": "dist"
@@ -58,7 +58,8 @@
         "allow-plugins": {
             "infection/extension-installer": true,
             "symfony/flex": true,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "php-http/discovery": true
         }
     },
     "autoload": {
@@ -76,6 +77,7 @@
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
         "symfony/polyfill-mbstring": "*",
+        "symfony/polyfill-php82": "*",
         "symfony/polyfill-php81": "*",
         "symfony/polyfill-php80": "*",
         "symfony/polyfill-php74": "*",
@@ -103,7 +105,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.2.*",
+            "require": "6.3.*",
             "docker": false
         }
     }
