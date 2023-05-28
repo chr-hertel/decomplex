@@ -19,7 +19,11 @@
         </div>
         <div class="container share">
             <div>
-                <button class="js-permalink-create permalink-create" title="Click to create permalink">Share Complexity Diff</button>
+                <button class="js-permalink-create permalink-create"
+                        title="Click to create permalink">
+                    <i class="fa fa-share-nodes"></i>
+                    Share Complexity Diff
+                </button>
                 <input type="text" readonly="readonly" class="js-permalink-input"
                        placeholder="&lArr; Click share button to generate permalink to this complexity diff ..."
                        value="{{ diff ? url('decomplex_permalink', {id: diff.id}) }}" />
