@@ -13,6 +13,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.15",
         "niels-de-blaauw/php-doc-check": "^0.2",
+        "openai-php/symfony": "^0.4.1",
         "pugx/shortid-php": "^1.1",
         "sentry/sentry-symfony": "^4.8",
         "symfony/asset": "^6.3",

@@ -28,8 +28,13 @@ export let Editor = function ($wrapper) {
     $wrapper.on('click', '.js-copy-editor', this.copyEditorText.bind(this));
     $wrapper.on(
         'click',
-        '.js-recalculate-complexities',
-        this.handleRecalculate.bind(this)
+        '.js-calculate-complexities',
+        this.handleCalculate.bind(this)
+    );
+    $wrapper.on(
+        'click',
+        '.js-simplify-code',
+        this.handleSimplifyCode.bind(this)
     );
 };
 
@@ -40,7 +45,7 @@ $.extend(Editor.prototype, {
     copyEditorText: function () {
         navigator.clipboard.writeText(this.getCode());
     },
-    handleRecalculate: function () {
+    handleCalculate: function () {
         this.waitingForCalculation();
         var self = this;
         $.ajax({
@@ -108,5 +113,46 @@ $.extend(Editor.prototype, {
         } else {
             $error.text(errors[0].message + ' (Line ' + errors[0].line + ')');
         }
+    },
+    handleSimplifyCode: function () {
+        this.waitingForCalculation();
+        var self = this;
+        $.ajax({
+            method: 'POST',
+            url: '/simplify',
+            data: this.getCode(),
+        })
+            .then(function (data) {
+                self.setLevel(self.$wrapper, data.complexity_level);
+                self.replaceCode(data.code);
+                self.replaceComplexity(
+                    self.$wrapper.find('.js-cyclomatic-complexity'),
+                    data.cyclomatic_complexity
+                );
+                self.replaceComplexity(
+                    self.$wrapper.find('.js-cognitive-complexity'),
+                    data.cognitive_complexity
+                );
+                self.$wrapper.removeClass('calculating');
+            })
+            .catch(function (jqXHR) {
+                let error = { value: 'X', level: 'error' };
+                self.$wrapper
+                    .find('.code-error span')
+                    .text('Unable to simplify your code.');
+                self.setLevel(self.$wrapper, error.level);
+                self.replaceComplexity(
+                    self.$wrapper.find('.js-cyclomatic-complexity'),
+                    error
+                );
+                self.replaceComplexity(
+                    self.$wrapper.find('.js-cognitive-complexity'),
+                    error
+                );
+                self.$wrapper.removeClass('calculating');
+            });
+    },
+    replaceCode: function (code) {
+        this.editor.setValue(code);
     },
 });
