@@ -22,9 +22,14 @@
                 <span>Cyclomatic</span><br />Complexity
             </div>
         </div>
-        <button title="Calculate Complexities" class="js-recalculate-complexities">
-            <i class="fas fa-sync-alt"></i>
-        </button>
+        <div class="actions">
+            <button title="Calculate Complexities" class="js-calculate-complexities">
+                <i class="fa-solid fa-sync-alt"></i> Calculate Complexities
+            </button>
+            <button title="Simplify with OpenAI" class="js-simplify-code">
+                <i class="fa-solid fa-arrow-trend-down"></i> Simplify with OpenAI
+            </button>
+        </div>
         <div class="complexity-badge">
             <div class="js-cognitive-complexity metric complexity-level-{{ snippet.cognitiveComplexityLevel|default(default_level) }}"
                  data-complexity-level="{{ snippet.cognitiveComplexityLevel|default(default_level) }}">

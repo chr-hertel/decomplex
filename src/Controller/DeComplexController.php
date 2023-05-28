@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\DeComplex\CodeDiffer;
 use App\DeComplex\ComplexityCalculator;
+use App\DeComplex\ComplexitySimplifier;
 use App\DeComplex\Exception\CalculationException;
 use App\DeComplex\Exception\ParserException;
 use App\Entity\Diff;
@@ -44,6 +45,28 @@ final class DeComplexController extends AbstractController
         }
 
         return new JsonResponse($snippet);
+    }
+
+    #[Route('simplify', name: 'simplify', methods: ['POST'], defaults: ['_format' => 'json'])]
+    public function simplify(Request $request, ComplexitySimplifier $simplifier, ComplexityCalculator $calculator): JsonResponse
+    {
+        $initialCode = $request->getContent();
+
+        try {
+            $simplifiedCode = $simplifier->try($initialCode);
+        } catch (\Exception $exception) {
+            throw new BadRequestHttpException($exception->getMessage(), $exception);
+        }
+
+        try {
+            $snippet = $calculator->analyze($simplifiedCode);
+        } catch (ParserException $exception) {
+            throw new BadRequestHttpException($exception->getMessage(), $exception);
+        } catch (CalculationException $exception) {
+            return new JsonResponse($exception, 400);
+        }
+
+        return new JsonResponse(['code' => $simplifiedCode, ...$snippet->jsonSerialize()]);
     }
 
     #[Route('permalink', name: 'create_permalink', methods: ['POST'], defaults: ['_format' => 'json'])]

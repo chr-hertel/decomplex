@@ -174,6 +174,15 @@
     "ondram/ci-detector": {
         "version": "3.5.1"
     },
+    "openai-php/symfony": {
+        "version": "0.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.3",
+            "ref": "23b35dfd25adb2c5c467a50239a9ef0aa16f9328"
+        }
+    },
     "paragonie/random-lib": {
         "version": "v2.0.1"
     },
