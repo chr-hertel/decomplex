@@ -21,4 +21,4 @@ jobs:
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
           dep: deploy
-          deployer-version: "v7.0.0-rc.8"
+          deployer-version: "v7.3.1"

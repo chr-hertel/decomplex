@@ -8,9 +8,6 @@
     "clue/stream-filter": {
         "version": "v1.6.0"
     },
-    "composer/package-versions-deprecated": {
-        "version": "1.11.99.4"
-    },
     "composer/pcre": {
         "version": "1.0.0"
     },
@@ -176,9 +173,6 @@
     },
     "ondram/ci-detector": {
         "version": "3.5.1"
-    },
-    "openlss/lib-array2xml": {
-        "version": "1.0.0"
     },
     "paragonie/random-lib": {
         "version": "v2.0.1"
@@ -642,9 +636,6 @@
     },
     "webmozart/assert": {
         "version": "1.10.0"
-    },
-    "webmozart/path-util": {
-        "version": "2.3.0"
     },
     "wp-cli/php-cli-tools": {
         "version": "v0.11.13"
