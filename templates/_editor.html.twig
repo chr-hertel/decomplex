@@ -29,6 +29,9 @@
             <button title="Simplify with OpenAI" class="js-simplify-code">
                 <i class="fa-solid fa-arrow-trend-down"></i> Simplify with OpenAI
             </button>
+            <div class="loading">
+                <i class="fa-solid fa-circle-notch fa-spin"></i> Loading response ...
+            </div>
         </div>
         <div class="complexity-badge">
             <div class="js-cognitive-complexity metric complexity-level-{{ snippet.cognitiveComplexityLevel|default(default_level) }}"

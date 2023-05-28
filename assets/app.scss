@@ -205,6 +205,10 @@ header {
             button + button {
                 @apply rounded-t-none rounded-b border-t-2;
             }
+
+            .loading {
+                @apply rounded px-4 text-gray-500 hidden;
+            }
         }
     }
 
@@ -212,8 +216,13 @@ header {
         .complexity-badge {
             @apply opacity-50;
         }
-        button {
-            @apply opacity-0;
+        .actions {
+            button {
+                @apply hidden;
+            }
+            .loading {
+                @apply block;
+            }
         }
     }
 }
