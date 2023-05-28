@@ -19,11 +19,11 @@
         </div>
         <div class="container share">
             <div>
-                <button class="js-permalink-create permalink-create">Share Complexity Diff</button>
+                <button class="js-permalink-create permalink-create" title="Click to create permalink">Share Complexity Diff</button>
                 <input type="text" readonly="readonly" class="js-permalink-input"
                        placeholder="&lArr; Click share button to generate permalink to this complexity diff ..."
                        value="{{ diff ? url('decomplex_permalink', {id: diff.id}) }}" />
-                <button class="js-permalink-copy permalink-copy"><i class="fa fa-copy"></i></button>
+                <button class="js-permalink-copy permalink-copy" title="Click to copy permalink"><i class="fa fa-copy"></i></button>
             </div>
             <span>
                 Please be aware that your code snippets get stored on server-side while using this feature,
