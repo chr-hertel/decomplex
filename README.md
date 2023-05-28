@@ -11,7 +11,7 @@ Setup
 
 **Requirements**
 
-* PHP 8.1
+* PHP 8.2
 * NPM
 * Composer
 * Docker Compose
@@ -27,8 +27,8 @@ $ npm install
 $ npm run dev
 $ docker-compose up -d
 $ symfony console doctrine:database:create
+$ symfony console doctrine:migration:migrate --no-interaction
 $ symfony console doctrine:database:create --env=test
-$ symfony console doctrine:schema:update --force
-$ symfony console doctrine:schema:update --force --env=test
+$ symfony console doctrine:migration:migrate --env=test --no-interaction
 $ symfony serve -d
 ```
