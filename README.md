@@ -20,15 +20,15 @@ Setup
 **Steps**
 
 ```bash
-$ git clone git@github.com:chr-hertel/decomplex.git
-$ cd decomplex
-$ composer install
-$ npm install
-$ npm run dev
-$ docker-compose up -d
-$ symfony console doctrine:database:create
-$ symfony console doctrine:migration:migrate --no-interaction
-$ symfony console doctrine:database:create --env=test
-$ symfony console doctrine:migration:migrate --env=test --no-interaction
-$ symfony serve -d
+git clone git@github.com:chr-hertel/decomplex.git
+cd decomplex
+composer install
+npm install
+npm run dev
+docker-compose up -d
+symfony console doctrine:database:create
+symfony console doctrine:migration:migrate --no-interaction
+symfony console doctrine:database:create --env=test
+symfony console doctrine:migration:migrate --env=test --no-interaction
+symfony serve -d
 ```

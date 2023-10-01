@@ -16,10 +16,17 @@ final readonly class ComplexitySimplifier
 
     public function try(string $code): string
     {
-        $message = 'Reduce the complexity of this PHP code and respond only with the code: '.$code;
+        $systemPrompt = <<<PROMPT
+            You are an experienced PHP developer and assist developers with reducing the complexity of their code.
+            You are given PHP code and you have to simplify it. Respond with the code only.
+            PROMPT;
+
         $result = $this->client->chat()->create([
             'model' => 'gpt-3.5-turbo',
-            'messages' => [['role' => 'assistant', 'content' => $message]],
+            'messages' => [
+                ['role' => 'system', 'content' => $systemPrompt],
+                ['role' => 'user', 'content' => $code],
+            ],
         ]);
 
         $code = u($result->choices[0]->message->content)->after('```php')->after('<?php')->beforeLast('```')->trim();
