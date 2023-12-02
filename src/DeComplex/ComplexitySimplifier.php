@@ -23,6 +23,7 @@ final readonly class ComplexitySimplifier
 
         $result = $this->client->chat()->create([
             'model' => 'gpt-3.5-turbo',
+            'temperature' => 0.3,
             'messages' => [
                 ['role' => 'system', 'content' => $systemPrompt],
                 ['role' => 'user', 'content' => $code],
