@@ -21,6 +21,10 @@ Encore
     .autoProvideVariables({
         CodeMirror: 'codemirror',
     })
+    .configureBabelPresetEnv((config) => {
+        config.useBuiltIns = 'usage';
+        config.corejs = '3.38';
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();
