@@ -12,7 +12,7 @@ class Snippet implements \JsonSerializable
     /**
      * @psalm-suppress PropertyNotSetInConstructor
      */
-    #[ORM\Id, ORM\Column(type: 'integer'), ORM\GeneratedValue]
+    #[ORM\Id, ORM\Column(type: 'integer'), ORM\GeneratedValue(strategy: 'SEQUENCE')]
     private int $id;
 
     public function __construct(

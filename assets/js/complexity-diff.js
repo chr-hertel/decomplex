@@ -7,12 +7,12 @@ export let ComplexityDiff = function () {
     $(document).on(
         'click',
         '.js-permalink-create',
-        this.handlePermalinkCreate.bind(this)
+        this.handlePermalinkCreate.bind(this),
     );
     $(document).on(
         'click',
         '.js-permalink-copy',
-        this.handlePermalinkCopy.bind(this)
+        this.handlePermalinkCopy.bind(this),
     );
 };
 
@@ -32,7 +32,7 @@ $.extend(ComplexityDiff.prototype, {
             })
             .catch(function (jqXHR) {
                 $('.js-permalink-input').val(
-                    "You can't create a permalink from broken code."
+                    "Whoops, can't create a permalink - is the code alright?",
                 );
             });
     },

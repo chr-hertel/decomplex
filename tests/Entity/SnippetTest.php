@@ -58,7 +58,7 @@ class SnippetTest extends TestCase
         string $cyclomaticLevel,
         int $cognitiveComplexity,
         string $cognitiveLevel,
-        string $complexityLevel
+        string $complexityLevel,
     ): void {
         $snippet = new Snippet('code', '091234', $cyclomaticComplexity, $cognitiveComplexity);
 
