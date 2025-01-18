@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\Snippet;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class SnippetTest extends TestCase
@@ -51,15 +52,13 @@ class SnippetTest extends TestCase
         static::assertSame('low', $this->snippet->getCognitiveComplexityLevel());
     }
 
-    /**
-     * @dataProvider provideSampleComplexities
-     */
+    #[DataProvider('provideSampleComplexities')]
     public function testJsonSerialization(
         int $cyclomaticComplexity,
         string $cyclomaticLevel,
         int $cognitiveComplexity,
         string $cognitiveLevel,
-        string $complexityLevel
+        string $complexityLevel,
     ): void {
         $snippet = new Snippet('code', '091234', $cyclomaticComplexity, $cognitiveComplexity);
 
@@ -80,7 +79,7 @@ class SnippetTest extends TestCase
     /**
      * @return array<int,array{0: int, 1: string, 2: int, 3: string, 4: string}>
      */
-    public function provideSampleComplexities(): array
+    public static function provideSampleComplexities(): array
     {
         return [
             [1, 'low', 2, 'low', 'low'],

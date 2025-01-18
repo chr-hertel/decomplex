@@ -8,9 +8,11 @@ use App\DeComplex\CodeHasher;
 use App\DeComplex\ComplexityCalculator;
 use App\Entity\Snippet;
 use App\Repository\SnippetRepository;
+use LogicException;
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;
 use NdB\PhpDocCheck\Metrics\CyclomaticComplexity;
 use PhpParser\ParserFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Spatie\Snapshots\MatchesSnapshots;
 
@@ -33,9 +35,7 @@ final class ComplexityCalculatorTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider provideCodeSnippets
-     */
+    #[DataProvider('provideCodeSnippets')]
     public function testComplexityCalculation(string $sourceFile, int $cyclomaticComplexity, int $cognitiveComplexity): void
     {
         $code = (string) file_get_contents($sourceFile);
@@ -48,7 +48,7 @@ final class ComplexityCalculatorTest extends TestCase
     /**
      * @return array<int,array{0: string, 1: int, 2: int}>
      */
-    public function provideCodeSnippets(): array
+    public static function provideCodeSnippets(): array
     {
         return [
             [__DIR__.'/../fixtures/camelcase-messy.php', 5, 7],
@@ -58,7 +58,7 @@ final class ComplexityCalculatorTest extends TestCase
 
     public function testInvalidCodeSnippet(): void
     {
-        $this->expectException(\LogicException::class);
+        $this->expectException(LogicException::class);
 
         $this->calculator->analyze('<?php $;null->$null');
     }

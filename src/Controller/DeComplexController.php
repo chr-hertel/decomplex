@@ -10,12 +10,13 @@ use App\DeComplex\ComplexitySimplifier;
 use App\DeComplex\Exception\CalculationException;
 use App\DeComplex\Exception\ParserException;
 use App\Entity\Diff;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[Route('/', name: 'decomplex_')]
@@ -23,7 +24,7 @@ final class DeComplexController extends AbstractController
 {
     #[Route('', name: 'index', methods: ['GET'])]
     #[Route('/{id<[0-9a-zA-Z\-\_]{6}>}', name: 'permalink', methods: ['GET'])]
-    public function index(Diff $diff = null, string $id = null): Response
+    public function index(?Diff $diff = null, ?string $id = null): Response
     {
         return $this->render('index.html.twig', [
             'diff' => $diff,
@@ -54,7 +55,7 @@ final class DeComplexController extends AbstractController
 
         try {
             $simplifiedCode = $simplifier->try($initialCode);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new BadRequestHttpException($exception->getMessage(), $exception);
         }
 

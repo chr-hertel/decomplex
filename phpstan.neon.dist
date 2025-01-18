@@ -13,9 +13,13 @@ parameters:
         - tests/fixtures/*.php
         - tests/bootstrap.php
     symfony:
-        container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
+        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
     ignoreErrors:
         -
             message: '#^Property App\\Entity\\[a-zA-Z]+::\$id is (never written, only read|unused).$#'
             count: 1
             path: src/Entity/*
+        -
+            message: '#^Class App\\Repository\\[a-zA-Z]+Repository has PHPDoc tag @method for method find[a-zA-Z]+\(\) parameter \#[0-9]+ \$[a-zA-Z]+ with no value type specified in iterable type array.$#'
+            count: 2
+            path: src/Repository/*

@@ -14,11 +14,11 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.4'
 
       - name: Deploy
         uses: deployphp/action@v1
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
           dep: deploy
-          deployer-version: "v7.3.0"
+          deployer-version: "v7.5.8"

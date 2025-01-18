@@ -2,6 +2,8 @@
 
 namespace App\Helper;
 
+use Exception;
+
 class StringUtil
 {
     public function camelCase(string $string, bool $lower = false): string
@@ -15,7 +17,7 @@ class StringUtil
                 $string = lcfirst($string);
             }
         } else {
-            throw new \Exception('Cannot transform an empty string');
+            throw new Exception('Cannot transform an empty string');
         }
 
         return $string;

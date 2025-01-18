@@ -29,12 +29,12 @@ export let Editor = function ($wrapper) {
     $wrapper.on(
         'click',
         '.js-calculate-complexities',
-        this.handleCalculate.bind(this)
+        this.handleCalculate.bind(this),
     );
     $wrapper.on(
         'click',
         '.js-simplify-code',
-        this.handleSimplifyCode.bind(this)
+        this.handleSimplifyCode.bind(this),
     );
 };
 
@@ -57,11 +57,11 @@ $.extend(Editor.prototype, {
                 self.setLevel(self.$wrapper, data.complexity_level);
                 self.replaceComplexity(
                     self.$wrapper.find('.js-cyclomatic-complexity'),
-                    data.cyclomatic_complexity
+                    data.cyclomatic_complexity,
                 );
                 self.replaceComplexity(
                     self.$wrapper.find('.js-cognitive-complexity'),
-                    data.cognitive_complexity
+                    data.cognitive_complexity,
                 );
                 self.$wrapper.removeClass('calculating');
             })
@@ -71,11 +71,11 @@ $.extend(Editor.prototype, {
                 self.setLevel(self.$wrapper, error.level);
                 self.replaceComplexity(
                     self.$wrapper.find('.js-cyclomatic-complexity'),
-                    error
+                    error,
                 );
                 self.replaceComplexity(
                     self.$wrapper.find('.js-cognitive-complexity'),
-                    error
+                    error,
                 );
                 self.$wrapper.removeClass('calculating');
             });
@@ -127,11 +127,11 @@ $.extend(Editor.prototype, {
                 self.replaceCode(data.code);
                 self.replaceComplexity(
                     self.$wrapper.find('.js-cyclomatic-complexity'),
-                    data.cyclomatic_complexity
+                    data.cyclomatic_complexity,
                 );
                 self.replaceComplexity(
                     self.$wrapper.find('.js-cognitive-complexity'),
-                    data.cognitive_complexity
+                    data.cognitive_complexity,
                 );
                 self.$wrapper.removeClass('calculating');
             })
@@ -143,11 +143,11 @@ $.extend(Editor.prototype, {
                 self.setLevel(self.$wrapper, error.level);
                 self.replaceComplexity(
                     self.$wrapper.find('.js-cyclomatic-complexity'),
-                    error
+                    error,
                 );
                 self.replaceComplexity(
                     self.$wrapper.find('.js-cognitive-complexity'),
-                    error
+                    error,
                 );
                 self.$wrapper.removeClass('calculating');
             });

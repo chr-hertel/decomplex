@@ -8,6 +8,7 @@ use App\Entity\Diff;
 use App\Repository\DiffRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
+use LogicException;
 
 final class CodeDiffer
 {
@@ -34,7 +35,7 @@ final class CodeDiffer
             if (null === $diff) {
                 $message = 'Cannot find diff with given snippets (left: %s and right: %s)';
 
-                throw new \LogicException(sprintf($message, $leftSnippet->getHash(), $rightSnippet->getHash()));
+                throw new LogicException(sprintf($message, $leftSnippet->getHash(), $rightSnippet->getHash()));
             }
         }
 
