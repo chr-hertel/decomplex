@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\DeComplex\Exception;
 
+use DomainException;
+use JsonSerializable;
 use PhpParser\Error;
 use PhpParser\ErrorHandler\Collecting;
 
-final class CalculationException extends \DomainException implements \JsonSerializable
+final class CalculationException extends DomainException implements JsonSerializable
 {
     public function __construct(public readonly Collecting $collecting)
     {

@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:11
+        image: postgres:15
         env:
           POSTGRES_DB: 'symfony_test'
           POSTGRES_USER: 'postgres'
@@ -26,7 +26,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: '8.4'
 
       - name: Cache Vendors
         uses: actions/cache@v2
@@ -54,7 +54,7 @@ jobs:
         run: bin/console cache:warmup --env=prod
 
       - name: Code Style PHP
-        run: vendor/bin/php-cs-fixer fix --dry-run
+        run: PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --dry-run
 
       - name: Cache Node Modules
         uses: actions/cache@v2
@@ -71,9 +71,6 @@ jobs:
 
       - name: PHPStan
         run: vendor/bin/phpstan analyse
-
-      - name: Psalm
-        run: vendor/bin/psalm --show-info=true
 
       - name: Setup Database
         run: bin/console doctrine:migration:migrate --env=test --no-interaction

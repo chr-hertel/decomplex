@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 #[ORM\Entity]
-class Snippet implements \JsonSerializable
+class Snippet implements JsonSerializable
 {
-    /**
-     * @psalm-suppress PropertyNotSetInConstructor
-     */
     #[ORM\Id, ORM\Column(type: 'integer'), ORM\GeneratedValue(strategy: 'SEQUENCE')]
     private int $id;
 

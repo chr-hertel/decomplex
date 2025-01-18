@@ -8,6 +8,7 @@ use App\DeComplex\CodeHasher;
 use App\DeComplex\ComplexityCalculator;
 use App\Entity\Snippet;
 use App\Repository\SnippetRepository;
+use LogicException;
 use NdB\PhpDocCheck\Metrics\CognitiveComplexity;
 use NdB\PhpDocCheck\Metrics\CyclomaticComplexity;
 use PhpParser\ParserFactory;
@@ -57,7 +58,7 @@ final class ComplexityCalculatorTest extends TestCase
 
     public function testInvalidCodeSnippet(): void
     {
-        $this->expectException(\LogicException::class);
+        $this->expectException(LogicException::class);
 
         $this->calculator->analyze('<?php $;null->$null');
     }

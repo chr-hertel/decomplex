@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\DiffRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\Shortid\Shortid;
 
@@ -16,7 +17,7 @@ class Diff
     private string $id;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    private \DateTimeImmutable $createdAt;
+    private DateTimeImmutable $createdAt;
 
     public function __construct(
         #[ORM\ManyToOne(targetEntity: Snippet::class, fetch: 'EAGER', cascade: ['persist'])]
@@ -25,7 +26,7 @@ class Diff
         private readonly Snippet $snippetRight,
     ) {
         $this->id = (string) Shortid::generate(6);
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new DateTimeImmutable();
     }
 
     public function getId(): string
@@ -33,7 +34,7 @@ class Diff
         return $this->id;
     }
 
-    public function getCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
     }

@@ -2,12 +2,14 @@
 
 namespace App\Helper;
 
+use Exception;
+
 class StringUtil
 {
     public function camelCase(string $string): string
     {
         if ('' === $string) {
-            throw new \Exception('Cannot transform an empty string');
+            throw new Exception('Cannot transform an empty string');
         }
 
         return str_replace(' ', '', preg_replace_callback('/\b./u', static function ($m) use (&$i) {

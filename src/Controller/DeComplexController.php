@@ -10,6 +10,7 @@ use App\DeComplex\ComplexitySimplifier;
 use App\DeComplex\Exception\CalculationException;
 use App\DeComplex\Exception\ParserException;
 use App\Entity\Diff;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,7 +55,7 @@ final class DeComplexController extends AbstractController
 
         try {
             $simplifiedCode = $simplifier->try($initialCode);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new BadRequestHttpException($exception->getMessage(), $exception);
         }
 
