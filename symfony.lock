@@ -1,7 +1,4 @@
 {
-    "clue/stream-filter": {
-        "version": "v1.6.0"
-    },
     "composer/pcre": {
         "version": "1.0.0"
     },
@@ -29,9 +26,6 @@
     },
     "doctrine/collections": {
         "version": "1.6.8"
-    },
-    "doctrine/common": {
-        "version": "3.2.0"
     },
     "doctrine/dbal": {
         "version": "3.2.0"
@@ -105,14 +99,8 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
-    "guzzlehttp/promises": {
-        "version": "1.5.1"
-    },
     "guzzlehttp/psr7": {
         "version": "2.4.0"
-    },
-    "http-interop/http-factory-guzzle": {
-        "version": "1.2.0"
     },
     "infection/abstract-testframework-adapter": {
         "version": "0.5.0"
@@ -183,23 +171,8 @@
     "php-cs-fixer/diff": {
         "version": "v2.0.2"
     },
-    "php-http/client-common": {
-        "version": "2.5.0"
-    },
     "php-http/discovery": {
         "version": "1.14.2"
-    },
-    "php-http/httplug": {
-        "version": "2.3.0"
-    },
-    "php-http/message": {
-        "version": "1.13.0"
-    },
-    "php-http/message-factory": {
-        "version": "v1.0.2"
-    },
-    "php-http/promise": {
-        "version": "1.1.0"
     },
     "phpmd/phpmd": {
         "version": "2.11.0"
@@ -328,9 +301,6 @@
     },
     "seld/jsonlint": {
         "version": "1.8.3"
-    },
-    "sentry/sdk": {
-        "version": "3.2.0"
     },
     "sentry/sentry": {
         "version": "3.6.0"

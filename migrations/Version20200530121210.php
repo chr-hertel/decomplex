@@ -11,8 +11,6 @@ final class Version20200530121210 extends AbstractMigration
 {
     public function up(Schema $schema): void
     {
-        $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
-
         $this->addSql('CREATE SEQUENCE snippet_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE snippet (id INT NOT NULL, hash VARCHAR(255) NOT NULL, code TEXT NOT NULL, cyclomatic_complexity INT NOT NULL, cognitive_complexity INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_961C8CD5D1B862B8 ON snippet (hash)');
@@ -30,8 +28,6 @@ final class Version20200530121210 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
-
         $this->addSql('CREATE SCHEMA public');
         $this->addSql('ALTER TABLE diff DROP CONSTRAINT FK_457047ABBD3DC7D1');
         $this->addSql('ALTER TABLE diff DROP CONSTRAINT FK_457047AB4B12BA52');
