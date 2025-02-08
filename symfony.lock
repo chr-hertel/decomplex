@@ -1,7 +1,4 @@
 {
-    "clue/stream-filter": {
-        "version": "v1.6.0"
-    },
     "composer/pcre": {
         "version": "1.0.0"
     },
@@ -29,9 +26,6 @@
     },
     "doctrine/collections": {
         "version": "1.6.8"
-    },
-    "doctrine/common": {
-        "version": "3.2.0"
     },
     "doctrine/dbal": {
         "version": "3.2.0"
@@ -105,14 +99,8 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
-    "guzzlehttp/promises": {
-        "version": "1.5.1"
-    },
     "guzzlehttp/psr7": {
         "version": "2.4.0"
-    },
-    "http-interop/http-factory-guzzle": {
-        "version": "1.2.0"
     },
     "infection/abstract-testframework-adapter": {
         "version": "0.5.0"
@@ -183,23 +171,17 @@
     "php-cs-fixer/diff": {
         "version": "v2.0.2"
     },
-    "php-http/client-common": {
-        "version": "2.5.0"
-    },
     "php-http/discovery": {
-        "version": "1.14.2"
-    },
-    "php-http/httplug": {
-        "version": "2.3.0"
-    },
-    "php-http/message": {
-        "version": "1.13.0"
-    },
-    "php-http/message-factory": {
-        "version": "v1.0.2"
-    },
-    "php-http/promise": {
-        "version": "1.1.0"
+        "version": "1.20",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.18",
+            "ref": "f45b5dd173a27873ab19f5e3180b2f661c21de02"
+        },
+        "files": [
+            "config/packages/http_discovery.yaml"
+        ]
     },
     "phpmd/phpmd": {
         "version": "2.11.0"
@@ -208,7 +190,16 @@
         "version": "v1.15.0"
     },
     "phpstan/phpstan": {
-        "version": "0.12.99"
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "5e490cc197fb6bb1ae22e5abbc531ddc633b6767"
+        },
+        "files": [
+            "phpstan.dist.neon"
+        ]
     },
     "phpstan/phpstan-phpunit": {
         "version": "0.12.22"
@@ -329,19 +320,16 @@
     "seld/jsonlint": {
         "version": "1.8.3"
     },
-    "sentry/sdk": {
-        "version": "3.2.0"
-    },
     "sentry/sentry": {
         "version": "3.6.0"
     },
     "sentry/sentry-symfony": {
-        "version": "4.14",
+        "version": "5.1",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
-            "version": "4.6",
-            "ref": "153de5f041f7e8a9c19f3674b800b76be0e6fd90"
+            "version": "5.0",
+            "ref": "76afa07d23e76f678942f00af5a6a417ba0816d0"
         },
         "files": [
             "config/packages/sentry.yaml"

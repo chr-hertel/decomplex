@@ -25,7 +25,7 @@ cd decomplex
 composer install
 npm install
 npm run dev
-docker-compose up -d
+docker compose up -d
 symfony console doctrine:database:create
 symfony console doctrine:migration:migrate --no-interaction
 symfony console doctrine:database:create --env=test
