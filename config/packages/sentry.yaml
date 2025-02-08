@@ -2,13 +2,12 @@ when@prod:
     sentry:
         dsn: '%env(SENTRY_DSN)%'
         options:
-          integrations:
-            - 'Sentry\Integration\IgnoreErrorsIntegration'
-        # this hooks into critical paths of the framework (and vendors) to perform
-        # automatic instrumentation (there might be some performance penalty)
-        # https://docs.sentry.io/platforms/php/guides/symfony/performance/instrumentation/automatic-instrumentation/
-        tracing:
-            enabled: false
+            ignore_exceptions:
+                - 'Symfony\Component\ErrorHandler\Error\FatalError'
+                - 'Symfony\Component\Debug\Exception\FatalErrorException'
+                - 'Symfony\Component\HttpKernel\Exception\BadRequestHttpException'          # 400
+                - 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'            # 404
+                - 'Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException'    # 405
 
 #        If you are using Monolog, you also need this additional configuration to log the errors correctly:
 #        https://docs.sentry.io/platforms/php/guides/symfony/#monolog-integration
@@ -26,12 +25,4 @@ when@prod:
 #    https://docs.sentry.io/platforms/php/guides/symfony/#monolog-integration
 #    services:
 #        Monolog\Processor\PsrLogMessageProcessor:
-  #            tags: { name: monolog.processor, handler: sentry }
-
-    services:
-      Sentry\Integration\IgnoreErrorsIntegration:
-        $options:
-          ignore_exceptions:
-            - 'Symfony\Component\HttpKernel\Exception\BadRequestHttpException'          # 400
-            - 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'            # 404
-            - 'Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException'    # 405
+#            tags: { name: monolog.processor, handler: sentry }
