@@ -18,4 +18,8 @@ symfony composer install --working-dir=tools/phpmd
 symfony php tools/phpmd/vendor/bin/phpmd src ansi ruleset.xml --baseline-file phpmd-baseline.xml
 
 symfony php vendor/bin/phpunit
-XDEBUG_MODE=coverage symfony php vendor/bin/infection
+
+# Mutation testing is currently unavailable: infection >= 0.28 needs nikic/php-parser ^5,
+# but niels-de-blaauw/php-doc-check pins the app to ^4, and infection resolves php-parser
+# through the project autoloader even when installed standalone or as a phar.
+# Re-enable (see infection.json.dist) once php-doc-check supports php-parser ^5.
