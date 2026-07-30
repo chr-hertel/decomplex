@@ -16,8 +16,8 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 ###> phpunit/phpunit ###
-.phpunit.result.cache
 /phpunit.xml
+/.phpunit.cache/
 ###< phpunit/phpunit ###
 
 ###> friendsofphp/php-cs-fixer ###
