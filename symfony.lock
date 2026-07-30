@@ -512,12 +512,12 @@
         "version": "v6.0.0"
     },
     "symfony/web-profiler-bundle": {
-        "version": "7.2",
+        "version": "8.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
-            "version": "6.1",
-            "ref": "e42b3f0177df239add25373083a564e5ead4e13a"
+            "version": "8.1",
+            "ref": "6bdd46f712bbed33a27130b6e055391cb1ab73d9"
         },
         "files": [
             "config/packages/web_profiler.yaml",
