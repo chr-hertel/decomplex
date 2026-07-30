@@ -28,6 +28,7 @@ yarn-error.log
 infection.log
 http-client.env.json
 docker-compose.override.yml
+/tools/*/vendor/
 
 ###> phpstan/phpstan ###
 phpstan.neon

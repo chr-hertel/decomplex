@@ -13,7 +13,9 @@ npm run check-style
 npm audit
 
 symfony php vendor/bin/phpstan analyse
-symfony php vendor/bin/phpmd src ansi ruleset.xml --baseline-file phpmd-baseline.xml
+
+symfony composer install --working-dir=tools/phpmd
+symfony php tools/phpmd/vendor/bin/phpmd src ansi ruleset.xml --baseline-file phpmd-baseline.xml
 
 symfony php vendor/bin/phpunit
 XDEBUG_MODE=coverage symfony php vendor/bin/infection

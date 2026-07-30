@@ -32,8 +32,6 @@
         "deployer/deployer": "^7.5",
         "friendsofphp/php-cs-fixer": "^3.68",
         "infection/infection": "^0.27",
-        "pdepend/pdepend": "^2.16",
-        "phpmd/phpmd": "^2.15",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-symfony": "^2.0",
