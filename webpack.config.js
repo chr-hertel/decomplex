@@ -1,4 +1,4 @@
-const Encore = require('@symfony/webpack-encore');
+import Encore from '@symfony/webpack-encore';
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
@@ -12,7 +12,7 @@ Encore
     .disableSingleRuntimeChunk()
 
     .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
+
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
     .enableSassLoader()
@@ -21,10 +21,19 @@ Encore
     .autoProvideVariables({
         CodeMirror: 'codemirror',
     })
-    .configureBabelPresetEnv((config) => {
-        config.useBuiltIns = 'usage';
-        config.corejs = '3.38';
+
+    // Encore 7 no longer bundles a CSS minifier, it has to be picked explicitly
+    .configureCssMinimizerPlugin((options, MinimizerPlugin) => {
+        options.minify = MinimizerPlugin.cssnanoMinify;
+    })
+
+    // configure Babel
+    .configureBabel((config) => {
+        config.plugins.push([
+            'polyfill-corejs3',
+            { method: 'usage-global', version: '3.49' },
+        ]);
     })
 ;
 
-module.exports = Encore.getWebpackConfig();
+export default await Encore.getWebpackConfig();
