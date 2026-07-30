@@ -7,7 +7,7 @@ symfony console lint:yaml config --parse-tags
 symfony console lint:twig templates
 symfony console lint:container
 
-PHP_CS_FIXER_IGNORE_ENV=1 symfony php vendor/bin/php-cs-fixer fix --dry-run
+symfony php vendor/bin/php-cs-fixer fix --dry-run
 npm run check-style
 
 npm audit
