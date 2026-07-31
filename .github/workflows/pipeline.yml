@@ -47,7 +47,7 @@ jobs:
         run: bin/console cache:warmup --env=prod
 
       - name: Code Style PHP
-        run: PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --dry-run
+        run: vendor/bin/php-cs-fixer fix --dry-run
 
       - name: Cache Node Modules
         uses: actions/cache@v4

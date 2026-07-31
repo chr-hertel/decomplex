@@ -16,8 +16,8 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 ###> phpunit/phpunit ###
-.phpunit.result.cache
 /phpunit.xml
+/.phpunit.cache/
 ###< phpunit/phpunit ###
 
 ###> friendsofphp/php-cs-fixer ###
@@ -28,6 +28,7 @@ yarn-error.log
 infection.log
 http-client.env.json
 docker-compose.override.yml
+/tools/*/vendor/
 
 ###> phpstan/phpstan ###
 phpstan.neon

@@ -1,0 +1,16 @@
+{
+    "description": "Isolated install for PHPMD - pdepend caps symfony/* at ^7 and would block the app's Symfony version",
+    "require": {
+        "php": "^8.4",
+        "phpmd/phpmd": "^2.15"
+    },
+    "config": {
+        "platform": {
+            "php": "8.4.23"
+        },
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    }
+}

@@ -64,8 +64,8 @@ class Snippet implements JsonSerializable
 
     /**
      * @return array{
-     *     cyclomatic_complexity: array{value: integer, level: string},
-     *     cognitive_complexity: array{value: integer, level: string},
+     *     cyclomatic_complexity: array{value: int, level: string},
+     *     cognitive_complexity: array{value: int, level: string},
      *     complexity_level: string
      * }
      */

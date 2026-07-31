@@ -2,4 +2,5 @@
 <phpmd-baseline>
   <violation rule="PHPMD\Rule\CleanCode\StaticAccess" file="src/Entity/Diff.php"/>
   <violation rule="PHPMD\Rule\UnusedPrivateField" file="src/Entity/Snippet.php"/>
+  <violation rule="PHPMD\Rule\UnusedPrivateMethod" file="src/Kernel.php" method="getAllowedEnvs"/>
 </phpmd-baseline>

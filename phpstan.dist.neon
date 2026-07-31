@@ -23,3 +23,8 @@ parameters:
             message: '#^Class App\\Repository\\[a-zA-Z]+Repository has PHPDoc tag @method for method find[a-zA-Z]+\(\) parameter \#[0-9]+ \$[a-zA-Z]+ with no value type specified in iterable type array.$#'
             count: 2
             path: src/Repository/*
+        -
+            # overrides a private hook that Symfony's KernelTrait calls on itself
+            message: '#^Method App\\Kernel::getAllowedEnvs\(\) is unused.$#'
+            count: 1
+            path: src/Kernel.php
