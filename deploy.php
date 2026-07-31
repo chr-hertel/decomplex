@@ -5,7 +5,7 @@ namespace Deployer;
 require 'recipe/symfony.php';
 
 // Config
-set('repository', 'git@github.com:chr-hertel/decomplex.git');
+set('repository', 'git@github-decomplex:chr-hertel/decomplex.git');
 set('composer_options', '--no-dev --verbose --prefer-dist --classmap-authoritative --no-progress --no-interaction --no-scripts');
 set('console_options', '--no-interaction --env=prod');
 
@@ -13,7 +13,6 @@ set('console_options', '--no-interaction --env=prod');
 host('decomplex.me')
     ->set('remote_user', 'deployer')
     ->set('deploy_path', '/var/www/decomplex')
-    ->set('identity_file', '~/.ssh/deploy-decomplex');
 
 // Tasks
 task('build', function () {
