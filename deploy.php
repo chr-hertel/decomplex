@@ -12,7 +12,7 @@ set('console_options', '--no-interaction --env=prod');
 // Hosts
 host('decomplex.me')
     ->set('remote_user', 'deployer')
-    ->set('deploy_path', '/var/www/decomplex')
+    ->set('deploy_path', '/var/www/decomplex');
 
 // Tasks
 task('build', function () {
